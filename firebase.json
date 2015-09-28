@@ -1,0 +1,14 @@
+{
+  "firebase": "radiant-fire-8311",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ],
+    "rewrites": [ {
+  "source": "**",
+  "destination": "/index.html"
+} ]
+    
+}

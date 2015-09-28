@@ -1,0 +1,116 @@
+<div id="multiple-blog-page">
+
+
+    <!-- header begin -->
+    <header class="page-head">
+        <div class="header-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <ol class="breadcrumb">
+                            <li><a href="/">home</a></li>
+                            <li><a href="/blog">blog</a></li>
+                        </ol> <!-- end of /.breadcrumb -->
+
+                    </div>
+                </div>
+            </div> <!-- /.container -->
+        </div> <!-- /.header-wrapper -->
+    </header> <!-- /.page-head (header end) -->
+
+
+    <section class="blog-content">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 col-md-offset-2" style="display: block;">
+
+                    <article class="blog-item">
+                        <img class="img-responsive center-block" src="assets/img/blog-item2.jpg" alt="blog-item2">
+                        <div class="blog-heading">
+                            <h3 class="text-capitalize"><a href="/blog/article1">Top 10 Massage</a></h3>
+                            <span class="date">may 24,2015</span>
+                            <span>12 comments</span>
+                        </div>
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and ...
+                        </p>
+
+                        <a href="/blog/article1" class="text-capitalize ">
+                            read more
+                            <span><i class="fa fa-angle-double-right"></i> </span>
+                        </a>
+                    </article> <!-- /.blog-item -->
+
+
+                    <article class="blog-item">
+                        <img class="img-responsive center-block" src="assets/img/blog-item3.jpg" alt="blog-item3">
+                        <div class="blog-heading">
+                            <h3 class="text-capitalize"><a href="/blog/article2">Acupuncture</a></h3>
+                            <span class="date">may 24,2015</span>
+                            <span>12 comments</span>
+                        </div>
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and ...
+                        </p>
+
+                        <a href="/blog/article2" class="text-capitalize ">
+                            read more
+                            <span><i class="fa fa-angle-double-right"></i> </span>
+                        </a>
+                    </article> <!-- /.blog-item -->
+
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <blockquote>
+                                <p>Duis eget ultricies lorem, et rhoncus augue. Aliquam id est semper, tincidunt nisi ac, tristique enim. Phasellus accumsan, enim eget facilisis mollis, est orcidearn malesuada libero, at tristique ligula nulla id eros hasellus accumsan.</p>
+                                <footer>Technext</footer>
+                            </blockquote>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class= "col-md-6 col-md-offset-3 text-center">
+                            <ul class="pagination">
+                                <li><a href="#"> < </a></li>
+                                <li class="active">
+                                    <a href="#">1 <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#"> > </a></li>
+                            </ul> <!-- /.pagination -->
+                        </div>
+                    </div>
+                </main>
+
+            </div>
+        </div>
+    </section>
+
+
+</div> 
+<!-- end of /#multiple-blog-page -->
+
+<!-- script for FAQ using jquery -->
+
+<script>
+    $(".faq-q").click( function () {
+      var container = $(this).parents(".faq-c");
+      var answer = container.find(".faq-a");
+      var trigger = container.find(".faq-t");
+      
+      answer.slideToggle(200);
+      
+      if (trigger.hasClass("faq-o")) {
+        trigger.removeClass("faq-o");
+      }
+      else {
+        trigger.addClass("faq-o");
+      }
+    });
+</script>
