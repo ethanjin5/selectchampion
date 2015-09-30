@@ -58,7 +58,7 @@
 
 /*================================= 1. font import  ===========================================*/
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800);
 
 
 
@@ -262,6 +262,13 @@ html {
 	background-repeat: no-repeat;
 }
 
+#make-appointment-page .page-head {
+	background: url(../img/services-bg.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
 #portfolio-page .page-head {
 	background: url(../img/portfolio-bg.jpg);
 	background-size: cover;
@@ -309,7 +316,7 @@ html {
 /* =-=--=-=-=-=-=-==-=-=-=-  2.4 Form   =-=-=-=-==-=-==-====-==-=- */
 
 .form-group {
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 }
 
 .form-control {
@@ -495,6 +502,7 @@ li {
 .section-title {
 	margin-bottom: 5px;
 	text-transform: uppercase;
+	text-align: center;
 }
 
 .section-sub-title {
@@ -937,6 +945,9 @@ section {
 .price-box .price-info {
     position: relative;
     padding: 0px 15px;
+}
+.price-box .price-info .detail-info{
+    height:270px;
 }
 
 .price-box .price-info .price {
@@ -1806,11 +1817,13 @@ aside .tag-widget .tags a:hover {
     margin: 50px 0px;
 }
 
-#map-canvas 
+#map-canvas iframe
 {
     width: 100%;
     height: 400px;
 }
+
+
 
 /*----------------------------  11.2  quick contact  ------------------------*/
 .contact-address {
@@ -1869,7 +1882,7 @@ aside .tag-widget .tags a:hover {
 }
 
 /*
-Theme Name: Avada Agency
+Theme Name: Healthwise
 Theme URI: http://themewagon.com/demo/avada-agency-pro/
 Author: ThemeWagon
 Author URI: http://themewagon.com/
@@ -1879,3 +1892,50 @@ License: GNU General Public License v3
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
 Tags: responsive layout, multiple-page
 */
+
+
+/*
+Feifan's Personal style
+*/
+.purple{
+    color: #574D86;
+}
+
+.fill-info .btn-black {
+	float: right;
+	margin-top: 20px;
+	margin-left:20px;
+}
+
+.logo-image{
+	height:42px;
+	font-size: 24px;
+	display: inline-block;
+	padding-top: 10px;
+}
+
+/* For appointment time slot styling*/
+.time-slot .btn-default{ 
+	width:100px;
+}
+.btn-default:nth-child(n+2) {
+    margin-bottom: -1px;
+}
+.time-slot .btn-default:hover{ 
+  background-color: #f2dede;
+  width:100px;
+}
+
+.time-slot input{ 
+  display:none; 
+}
+
+.time-slot input:checked ~ label { 
+  background:#f2dede; 
+}
+.time-slot input:not(:checked) ~ label { 
+  background:#fff;  
+}
+
+
+/* end of appointment time slot style*/
