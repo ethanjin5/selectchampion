@@ -11,6 +11,7 @@ app.config(function ($routeProvider, $locationProvider) {
 		.when("/contact", {templateUrl: "app/components/home/views/contactus.html", controller: "PageCtrl"})
 		.when("/service", {templateUrl: "app/components/home/views/service.html", controller: "PageCtrl"})
 		.when("/appointment", {templateUrl: "app/components/home/views/appointment.html", controller: "PageCtrl"})
+		.when("/comingsoon", {templateUrl: "app/components/home/views/coming_soon.html", controller: "PageCtrl"})
 		.when("/faq", {templateUrl: "app/components/home/views/faq.html", controller: "PageCtrl"})
 		/* etc… routes to other pages… */
 		// Blog

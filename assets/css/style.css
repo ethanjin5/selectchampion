@@ -1882,7 +1882,7 @@ aside .tag-widget .tags a:hover {
 }
 
 /*
-Theme Name: Avada Agency
+Theme Name: Healthwise
 Theme URI: http://themewagon.com/demo/avada-agency-pro/
 Author: ThemeWagon
 Author URI: http://themewagon.com/
@@ -1907,6 +1907,12 @@ Feifan's Personal style
 	margin-left:20px;
 }
 
+.logo-image{
+	height:42px;
+	font-size: 24px;
+	display: inline-block;
+	padding-top: 10px;
+}
 
 /* For appointment time slot styling*/
 .time-slot .btn-default{ 
