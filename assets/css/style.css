@@ -791,32 +791,32 @@ section {
 
 /*---------------------------  portfolio  ----------------------------------*/
 
-.portfolio-item {
+.champion-item {
 	margin-bottom: 3.1269em;
 }
 
-.portfolio-item .item-image {
+.champion-item .item-image {
 	position: relative;
 }
 
-.portfolio-item .item-image a,
-.portfolio-item .item-image a img {
+.champion-item .item-image a,
+.champion-item .item-image a img {
 	display: block;
 	position: relative;
 }
 
-.portfolio-item .item-image a {
+.champion-item .item-image a {
 	overflow: hidden;
 }
 
-.portfolio-item .item-image a div {
+.champion-item .item-image a div {
 	position: absolute;
 	background: rgba(75,75,75,0.7);
 	width: 100%;
 	height: 100%;
 }
 
-.portfolio-item .item-image a div span {
+.champion-item .item-image a div span {
 	color: #ffffff;
 	display: block;
 	font-size: 50px;
@@ -825,28 +825,28 @@ section {
 	top: 35%;
 }
 
-.portfolio-item .item-description {
+.champion-item .item-description {
     padding: 15px 0px;
 }
 
-.portfolio-item .item-description span {
+.champion-item .item-description span {
     display: block;
     color: #969595;
 }
 
-.portfolio-item .item-description span.item-name {
+.champion-item .item-description span.item-name {
     margin-bottom: 2px;
     font-size: 16px;
     color: #474747;
 }
 
-.portfolio-item .item-description span.like {
+.champion-item .item-description span.like {
     float: right;
     margin-top: 12px;
 }
 
 @media (max-width: 767px) {
-	.portfolio-item .item-description {
+	.champion-item .item-description {
 	    padding: 12px 50px;
 	}
 }
@@ -1882,7 +1882,7 @@ aside .tag-widget .tags a:hover {
 }
 
 /*
-Theme Name: Healthwise
+Theme Name: Champion Counter
 Theme URI: http://themewagon.com/demo/avada-agency-pro/
 Author: ThemeWagon
 Author URI: http://themewagon.com/
@@ -1914,28 +1914,6 @@ Feifan's Personal style
 	padding-top: 10px;
 }
 
-/* For appointment time slot styling*/
-.time-slot .btn-default{ 
-	width:100px;
+.champion-item-list .col-md-2{
+	width:14%;
 }
-.btn-default:nth-child(n+2) {
-    margin-bottom: -1px;
-}
-.time-slot .btn-default:hover{ 
-  background-color: #f2dede;
-  width:100px;
-}
-
-.time-slot input{ 
-  display:none; 
-}
-
-.time-slot input:checked ~ label { 
-  background:#f2dede; 
-}
-.time-slot input:not(:checked) ~ label { 
-  background:#fff;  
-}
-
-
-/* end of appointment time slot style*/

@@ -1,6 +1,6 @@
 
 'use strict';
-var app = angular.module('healthwise', ['ngRoute','appointment']);
+var app = angular.module('Champion Counter', ['ngRoute','appointment']);
 
 app.config(function ($routeProvider, $locationProvider) {
 	$routeProvider
@@ -38,9 +38,12 @@ console.log("Blog Controller reporting for duty.");
 /**
 * Controls all other Pages
 */
-app.controller('PageCtrl', function (/* $scope, $location, $http */) {
+app.controller('PageCtrl', function ($scope) {
 console.log("Page Controller reporting for duty.");
-
+$scope.number = 30;
+$scope.getNumber = function(num) {
+    return new Array(num);   
+}
 // Activates the Carousel
 $('.carousel').carousel({
 interval: 5000
