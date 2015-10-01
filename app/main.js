@@ -1,11 +1,13 @@
 
 'use strict';
-var app = angular.module('Champion Counter', ['ngRoute','appointment']);
+var app = angular.module('ChampionCounter', ['ngRoute','champion']);
 
 app.config(function ($routeProvider, $locationProvider) {
 	$routeProvider
 		// Home
 		.when("/", {templateUrl: "app/components/home/views/home.html", controller: "PageCtrl"})
+		//Champion Detail
+		.when("/champion", {templateUrl: "app/components/home/views/home.html", controller: "PageCtrl"})
 		// Pages
 		.when("/about", {templateUrl: "app/components/home/views/about.html", controller: "PageCtrl"})
 		.when("/contact", {templateUrl: "app/components/home/views/contactus.html", controller: "PageCtrl"})
@@ -40,7 +42,13 @@ console.log("Blog Controller reporting for duty.");
 */
 app.controller('PageCtrl', function ($scope) {
 console.log("Page Controller reporting for duty.");
-$scope.number = 30;
+$scope.champions = [
+                    { 'name':'ahri', 'url': '/champions/ahri'},
+                    { 'name':'azir', 'url': '/champions/azir'},
+	                { 'name':'yasuo','url': '/champions/yasuo'},
+		            { 'name':'malphite','url': '/champions/malphite'},
+			        { 'name':'diana','url': '/champions/diana'},
+                    ];
 $scope.getNumber = function(num) {
     return new Array(num);   
 }

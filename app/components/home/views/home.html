@@ -14,7 +14,7 @@
                             <p class="section-sub-title">
                                 点击英雄查看他所克制及被克的英雄和出装
                             </p> <!-- /.section-sub-title -->
-                            <input name="name" type="text" class="form-control" id="name" required="required" placeholder="Full Name">
+                            <input ng-model="searchKeyword" name="name" type="text" class="form-control" id="name" required="required" placeholder="输入英雄名">
                         </div>
                     </div>
                 </div> <!-- /.headline -->
@@ -23,10 +23,10 @@
                 <div class="champion-item-list">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" ng-repeat="i in getNumber(number) track by $index">
+                        <div class="col-md-2 col-sm-3" ng-repeat="champion in champions | filter: searchKeyword">
                             <div class="champion-item">
                                 <div class="item-image">
-                                    <a href="#">
+                                    <a href="{{champion.url}}">
                                         <img src="assets/img/portfolio1.jpg" class="img-responsive center-block" alt="portfolio1">
                                         <div><span><i class="fa fa-plus"></i></span></div>
                                     </a>
@@ -35,7 +35,7 @@
                                 <div class="item-description">
                                     <div>
                                             <span class="item-name">
-                                                皎月女神
+                                                {{champion.name}}
                                             </span>
 
                                     </div>
