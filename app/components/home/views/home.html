@@ -26,7 +26,7 @@
                         <div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="champion in champions | filter: searchKeyword">
                             <div class="champion-item">
                                 <div class="item-image">
-                                    <a href="{{champion.url}}">
+                                    <a href="/champion/{{champion.eng_name}}">
                                         <img src="assets/img/portfolio1.jpg" class="img-responsive center-block" alt="portfolio1">
                                         <div><span><i class="fa fa-plus"></i></span></div>
                                     </a>
@@ -54,7 +54,7 @@
     </div> <!-- end of /.main-content -->
 </div>
 
-
+<!-- TODO: hoverdir not working with angularjs -->
 <!-- script for portfolio section using hoverdirection -->
 <script type="text/javascript">
     $(function() {

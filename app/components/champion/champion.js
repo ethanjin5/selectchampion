@@ -3,7 +3,7 @@
 angular.module('champion',['ngRoute'])
 .config(function($routeProvider, $locationProvider) {
   $routeProvider
-  .when('/champions/:name', {
+  .when('/champion/:name', {
     templateUrl: 'app/components/champion/champion.html',
     controller: 'ChampionCtrl'
   })

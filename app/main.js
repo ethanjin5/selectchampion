@@ -40,18 +40,11 @@ console.log("Blog Controller reporting for duty.");
 /**
 * Controls all other Pages
 */
-app.controller('PageCtrl', function ($scope) {
-console.log("Page Controller reporting for duty.");
-$scope.champions = [
-                    { 'name':'ahri', 'url': '/champions/ahri'},
-                    { 'name':'azir', 'url': '/champions/azir'},
-	                { 'name':'yasuo','url': '/champions/yasuo'},
-		            { 'name':'malphite','url': '/champions/malphite'},
-			        { 'name':'diana','url': '/champions/diana'},
-                    ];
-$scope.getNumber = function(num) {
-    return new Array(num);   
-}
+app.controller('PageCtrl', function ($scope, $http) {
+
+$http.get("app/core/champion_list_mysql.php")
+    .success(function(response) {$scope.champions = response;});
+
 // Activates the Carousel
 $('.carousel').carousel({
 interval: 5000
