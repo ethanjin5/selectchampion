@@ -1,14 +1,9 @@
 {
-  "firebase": "radiant-fire-8311",
+  "firebase": "championcounter",
   "public": ".",
   "ignore": [
     "firebase.json",
     "**/.*",
     "**/node_modules/**"
-  ],
-    "rewrites": [ {
-  "source": "**",
-  "destination": "/index.html"
-} ]
-    
+  ]
 }
