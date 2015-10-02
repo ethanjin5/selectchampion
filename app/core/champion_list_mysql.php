@@ -2,10 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-$db_name  = 'championcounter';
-$hostname = 'localhost';
-$username = 'root';
-$password = 'mysql';
+require("mysql_config.php");
 
 $dbh = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
 $dbh->query('set names utf8;');
