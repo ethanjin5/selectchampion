@@ -5,9 +5,9 @@ var app = angular.module('ChampionCounter', ['ngRoute','champion']);
 app.config(function ($routeProvider, $locationProvider) {
 	$routeProvider
 		// Home
-		.when("/", {templateUrl: "app/components/home/views/home.html", controller: "PageCtrl"})
+		.when("/", {templateUrl: "app/components/home/views/home.html", controller: "HomeCtrl"})
 		//Champion Detail
-		.when("/champion", {templateUrl: "app/components/home/views/home.html", controller: "PageCtrl"})
+		.when("/champion", {templateUrl: "app/components/home/views/home.html", controller: "HomeCtrl"})
 		// Pages
 		.when("/about", {templateUrl: "app/components/home/views/about.html", controller: "PageCtrl"})
 		.when("/contact", {templateUrl: "app/components/home/views/contactus.html", controller: "PageCtrl"})
@@ -40,18 +40,21 @@ console.log("Blog Controller reporting for duty.");
 /**
 * Controls all other Pages
 */
-app.controller('PageCtrl', function ($scope, $http) {
+app.controller('HomeCtrl', function ($scope, $http) {
 
 $http.get("app/core/champion_list_mysql.php")
     .success(function(response) {$scope.champions = response;});
 
-// Activates the Carousel
-$('.carousel').carousel({
-interval: 5000
 });
 
-// Activates Tooltips for Social Links
-$('.tooltip-social').tooltip({
-selector: "a[data-toggle=tooltip]"
-})
+app.controller('PageCtrl', function () {
+	// Activates the Carousel
+	$('.carousel').carousel({
+	interval: 5000
+	});
+
+	// Activates Tooltips for Social Links
+	$('.tooltip-social').tooltip({
+	selector: "a[data-toggle=tooltip]"
+	})
 });
