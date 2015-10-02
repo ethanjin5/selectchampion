@@ -827,6 +827,7 @@ section {
 
 .champion-item .item-description {
     padding: 15px 0px;
+    text-align: center;
 }
 
 .champion-item .item-description span {
