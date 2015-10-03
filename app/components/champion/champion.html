@@ -8,8 +8,8 @@
                     <div class="col-md-12">
 
                         <ol class="breadcrumb">
-                            <li><a href="/">home</a></li>
-                            <li class="active">about us</li>
+                            <li><a href="/">主页</a></li>
+                            <li class="active">{{champion_detail.name}}</li>
                         </ol> <!-- end of /.breadcrumb -->
 
                     </div>
@@ -21,13 +21,13 @@
     <div class="main-content">
 
         <!-- begin our story section -->
-
+{{champion_detail.eng_name}}
         <section class="bg-white story">
             <div class="container">
                 <div class="headline text-center">
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3">
-                            <h2 class="section-title">{{champion_name}}</h2>
+                            <h2 class="section-title">{{champion}}</h2>
                         </div>
                     </div>
                 </div> <!-- /.headline -->
