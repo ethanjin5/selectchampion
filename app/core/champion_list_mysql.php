@@ -7,7 +7,7 @@ require("mysql_config.php");
 $dbh = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
 $dbh->query('set names utf8;');
 
-$sql = "SELECT name, eng_name, alias FROM champion_list";
+$sql = "SELECT name, eng_name, alias, keywords FROM champion_list";
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
 
