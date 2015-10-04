@@ -1,6 +1,6 @@
 
 'use strict';
-angular.module('champion',['ngRoute'])
+angular.module('champion',['ngRoute', 'ngSanitize'])
 .config(function($routeProvider, $locationProvider) {
   $routeProvider
   .when('/champion/:name', {

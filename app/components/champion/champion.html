@@ -27,8 +27,8 @@
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3">
                             <img src="assets/img/champ_img/{{champion.eng_name}}.png" class="img-responsive center-block" alt="{{champion.name}}">
-                            <h2 class="section-title">{{champion.name}}</h2>
                             <h3 class="section-title">{{champion.alias}}</h3>
+                            <h2 class="section-title">{{champion.name}}</h2>
                             <h4 class="section-title">{{champion.tags}}</h4>
                         </div>
                     </div>
@@ -36,9 +36,8 @@
 
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 text-center">
-                        <p class="story-description">
-                            {{champion.description}}
-                        </p> <!-- /.story-description -->
+                        <p class="story-description">空位 随意使用</p> 
+                        <!-- /.story-description -->
                     </div>
                 </div>
             </div>
@@ -50,41 +49,35 @@
         <section class="bg-light-gray skill">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
-                        <h2>show off your skills</h2>
-                        <p>
-                            Integer ac metus non ipsum congue tincidunt ut id lacus. Duis suscipit odio non lacus aliquam, eget faucibus enim posuere. Aenean ut lectus ipsum. Pellentesque sit amet elementum velit. Ut sapien ante, suscipit a auctor in, consectetur eu nibh. Etiam interdum consectetur lacus ut iaculis. In luctus magna vitae ultricies consequat.
-                        </p>
-
-                        <p>
-                            In et blandit erat, ut gravida ante. Etiam ut est at dolor vehicula tempus quis ut augue. Duis nec ipsum ex. Sed in libero sit amet metus placerat commodo ut vitae nisi. Maecenas sit amet elit augue. Pellentesque pellentesque lacus eu fringilla dignissim. Aliquam consequat nec sapien quis tempor. 
-                        </p>
+                    <div class="col-md-7 champion-tabs">
+                        <h2>背景故事</h2>
+                        <p class="champion-description" ng-bind-html="champion.description"></p>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <div class="skill-level">
-                            <p>Relaxness</p>
+                            <p>攻击</p>
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" style="width: 88%;">
                                     88%
                                  </div>
                             </div>
 
-                            <p>Comfortness</p>
+                            <p>防御</p>
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" style="width: 98%;">
                                     98%
                                  </div>
                             </div>
 
-                            <p>Cleaness</p>
+                            <p>治疗</p>
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;">
                                     75%
                                  </div>
                             </div>
 
-                            <p>Satifaction</p>
+                            <p>上手难度</p>
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
                                     85%
