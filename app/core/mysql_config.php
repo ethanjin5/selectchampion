@@ -6,7 +6,7 @@ $username = "a7603014_root";
 $password = "Cde3xsw@";
 */
 $hostname = "localhost";
-$db_name = "championcounter";
+$db_name = "selectchampion";
 $username = "root";
 $password = "mysql";
 ?>
