@@ -1,6 +1,6 @@
 
 'use strict';
-angular.module('champion',['ngRoute'])
+angular.module('champion',['ngRoute', 'ngSanitize'])
 .config(function($routeProvider, $locationProvider) {
   $routeProvider
   .when('/champion/:name', {
@@ -11,8 +11,11 @@ angular.module('champion',['ngRoute'])
   $locationProvider.html5Mode(true);
 })
 
-.controller('ChampionCtrl', function ($scope, $routeParams) {
-  $scope.champion_name = $routeParams.name;
+.controller('ChampionCtrl', function ($scope, $routeParams, $http) {
+    $scope.champion_name = $routeParams.name;
+    
+    $http.get("app/components/champion/champion_mysql.php?param="+$routeParams.name)
+    .success(function(response) {$scope.champion = response;});
 
 	$scope.date = new Date();
 });

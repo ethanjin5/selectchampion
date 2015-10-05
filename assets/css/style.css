@@ -837,7 +837,7 @@ section {
 
 .champion-item .item-description span.item-name {
     margin-bottom: 2px;
-    font-size: 16px;
+    font-size: 13.5px;
     color: #474747;
 }
 
@@ -1047,7 +1047,7 @@ section {
 }
 
 /*=============================================================================
-						4. About page
+						4. Champion page
 =============================================================================*/
 
 /*-----------------------------  4.1 story   ------------------------------------*/
@@ -1106,6 +1106,14 @@ section {
 .team-member-social a i:hover {
     background-color: #000;
     color: #fff;
+}
+
+/*----------------------------------------- 4.3 description  ------------------------------------*/
+
+.champion-tabs .champion-description{
+    padding-right: 20px;
+    max-height: 200px;
+    overflow-y: scroll;
 }
 
 /*----------------------------------------- 4.3 skill  ------------------------------------*/
@@ -1907,4 +1915,10 @@ Feifan's Personal style
 	font-size: 24px;
 	display: inline-block;
 	padding-top: 10px;
+}
+
+@media (min-width: 992px){
+.champion-item-list .col-md-2 {
+    width: 12.5%;
+}
 }
