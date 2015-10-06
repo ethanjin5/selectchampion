@@ -1,7 +1,7 @@
 <?php
 
-$hostname = "gator4164.hostgator.com";
-$db_name = "feifansn_selectchampion";
+$hostname = "localhost";
+$db_name = "selectchampion";
 $username = "root";
 $password = "mysql";
 
