@@ -15,5 +15,3 @@ $rs = $stmt->fetchAll( PDO::FETCH_ASSOC );
 $outp = json_encode($rs);
 echo($outp);
 ?>
-
-asdfsdf
