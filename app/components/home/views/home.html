@@ -20,7 +20,7 @@
                 </div> <!-- /.headline -->
 
 
-                <div class="champion-item-list">
+                <div class="champion-item-list" infinite-scroll="loadMore()" infinite-scroll-distance="2">
                     <div class="row">
 
                         <div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="champion in champions | filter: searchKeyword">
