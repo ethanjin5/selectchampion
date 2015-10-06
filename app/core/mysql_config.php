@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 $hostname = 'localhost';
 $db_name = 'feifansn_selectchampion';
 $username = 'feifansn_root';
