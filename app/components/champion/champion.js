@@ -15,7 +15,10 @@ angular.module('champion',['ngRoute', 'ngSanitize'])
     $scope.champion_name = $routeParams.name;
     
     $http.get("app/components/champion/champion_mysql.php?param="+$routeParams.name)
-    .success(function(response) {$scope.champion = response;});
+    .success(function(response) {
+      $scope.champion = response.champion;
+      $scope.counter = response.counter;
+    });
 
 	$scope.date = new Date();
 });

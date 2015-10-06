@@ -9,7 +9,7 @@
 
                         <ol class="breadcrumb">
                             <li><a href="/">主页</a></li>
-                            <li class="active">{{champion.name}}</li>
+                            <li class="active">{{::champion.name}}</li>
                         </ol> <!-- end of /.breadcrumb -->
 
                     </div>
@@ -26,17 +26,17 @@
                 <div class="headline text-center">
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3">
-                            <img src="assets/img/champ_img/{{champion.eng_name}}.png" class="img-responsive center-block" alt="{{champion.name}}">
-                            <h3 class="section-title">{{champion.alias}}</h3>
-                            <h2 class="section-title">{{champion.name}}</h2>
-                            <h4 class="section-title">{{champion.tags}}</h4>
+                            <img src="assets/img/champ_img/{{::champion.eng_name}}.png" class="img-responsive center-block" alt="{{::champion.name}}">
+                            <h3 class="section-title">{{::champion.alias}}</h3>
+                            <h2 class="section-title">{{::champion.name}}</h2>
+                            <h4 class="section-title">{{::champion.tags}}</h4>
                         </div>
                     </div>
                 </div> <!-- /.headline -->
 
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 text-center">
-                        <p class="story-description">空位 随意使用</p> 
+                        <p class="story-description">{{::champion}}</p> 
                         <!-- /.story-description -->
                     </div>
                 </div>

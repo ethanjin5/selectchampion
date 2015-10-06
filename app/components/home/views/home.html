@@ -23,18 +23,18 @@
                 <div class="champion-item-list" infinite-scroll="loadMore()" infinite-scroll-distance="2">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="champion in champions | filter: searchKeyword">
+                        <div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="champion in ::champions | filter: searchKeyword">
                             <div class="champion-item">
                                 <div class="item-image">
-                                    <a href="/champion/{{champion.eng_name}}">
-                                        <img src="assets/img/champ_img/{{champion.eng_name}}.png" class="img-responsive center-block" alt="{{champion.name}}">
+                                    <a href="/champion/{{::champion.eng_name}}">
+                                        <img src="assets/img/champ_img/{{::champion.eng_name}}.png" class="img-responsive center-block" alt="{{::champion.name}}">
                                         <div><span><i class="fa fa-plus"></i></span></div>
                                     </a>
                                 </div>
 
                                 <div class="item-description">
                                     <div>
-                                            <span class="item-name">{{champion.alias}}</span>
+                                            <span class="item-name">{{::champion.alias}}</span>
 
                                     </div>
                                 </div> <!-- end of /.item-description -->
