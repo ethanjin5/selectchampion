@@ -1,6 +1,6 @@
 <?php
 $hostname = 'localhost';
-$db_name = 'selectchampion';
+$db_name = 'feifansn_selectchampion';
 $username = 'feifansn_root';
 $password = 'mysql';
 ?>
