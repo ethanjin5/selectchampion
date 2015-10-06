@@ -2,7 +2,13 @@
 
 $hostname = "localhost";
 $db_name = "selectchampion";
-$username = "root";
+$username = "feifansn_root";
 $password = "mysql";
 
+/*
+$hostname = "localhost";
+$db_name = "selectchampion";
+$username = "root";
+$password = "mysql";
+*/
 ?>
