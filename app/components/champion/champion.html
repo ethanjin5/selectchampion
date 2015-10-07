@@ -36,7 +36,7 @@
 
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 text-center">
-                        <p class="story-description">{{::champion}}</p> 
+                        <p class="story-description">kong wei, sui yi shi yong</p> 
                         <!-- /.story-description -->
                     </div>
                 </div>
@@ -84,6 +84,35 @@
                                  </div>
                             </div>
                         </div> <!-- /.skill-level -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- begin counter section -->
+        <section class="bg-white story champion-counter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="champion-weak-against">
+                            <table>
+                                <tr ng-repeat="counter in counters">
+                                    <td>{{::counter.champion_weak}}</td>
+                                    <td>{{::counter.champion_strong}}</td>
+                                    <td><button class="btn btn-default" ng-click="upvote(counter.id)">
+                                        <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>{{counter.upvote}}
+                                    </button></td>
+                                    <td><button class="btn btn-default" ng-click="downvote(counter.id)">
+                                        <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>{{counter.downvote}}
+                                    </button></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="champion-strong-against">
+                            qwer
+                        </div>
                     </div>
                 </div>
             </div>

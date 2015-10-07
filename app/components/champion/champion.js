@@ -13,12 +13,39 @@ angular.module('champion',['ngRoute', 'ngSanitize'])
 
 .controller('ChampionCtrl', function ($scope, $routeParams, $http) {
     $scope.champion_name = $routeParams.name;
-    
-    $http.get("app/components/champion/champion_mysql.php?param="+$routeParams.name)
-    .success(function(response) {
-      $scope.champion = response.champion;
-      $scope.counter = response.counter;
-    });
+    getCounters();
+    function getCounters(){
+      $http.get("app/components/champion/champion_mysql.php?action=getInfo&param="+$routeParams.name)
+      .success(function(response) {
+        $scope.champion = response.champion;
+        $scope.counters = response.counters;
+      });
+    }
 
-	$scope.date = new Date();
+
+    //update upvote
+    $scope.upvote = function(id) {
+        $http.post('app/components/champion/champion_mysql.php?action=upvote', 
+            {
+                'counter_id'    : id
+            }
+        )
+        .success(function (response) {
+          getCounters();
+        })
+    }
+
+    $scope.downvote = function(id) {
+        $http.post('app/components/champion/champion_mysql.php?action=downvote', 
+            {
+                'counter_id'    : id
+            }
+        )
+        .success(function (response) {
+          getCounters();
+        })
+    }
+
+
+
 });

@@ -7,18 +7,55 @@ require("/home/feifansnf/opt/selectchampion/mysql_config.php");
 $dbh = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
 $dbh->query('set names utf8;');
 
-$champ_name = $_GET['param'];
-$sql = "SELECT id, name, eng_name, alias, description, tags FROM champion_list where eng_name = '$champ_name'";
-$stmt = $dbh->prepare($sql);
-$stmt->execute();
+switch($_GET['action']){
+case 'getInfo':
+	$champ_name = $_GET['param'];
+	$sql = "SELECT id, name, eng_name, alias, description, tags FROM champion_list where eng_name = '$champ_name'";
+	$stmt = $dbh->prepare($sql);
+	$stmt->execute();
 
-$rs = $stmt->fetch( PDO::FETCH_ASSOC );
-$champ_id = $rs['id'];
+	$rs = $stmt->fetch( PDO::FETCH_ASSOC );
+	$champ_id = $rs['id'];
+	$rcounter = getCounters($champ_id);
 
-$sql = "SELECT champion_two, upvote, downvote FROM counter where id = $champ_id";
-$stmt = $dbh->prepare($sql);
-$stmt->execute();
-$rcounter = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$outp = '{"champion":'.json_encode($rs).',"counter":'.json_encode($rcounter).'}';
-echo($outp);
+	$outp = '{"champion":'.json_encode($rs).',"counters":'.json_encode($rcounter).'}';
+	echo($outp);
+	break;
+
+case 'upvote':
+	upvote();
+	break;
+}
+
+function getCounters($champ_id){
+	global $dbh;
+	$sql = "SELECT c.id AS id, l.name AS champion_weak, l2.name AS champion_strong, upvote,downvote FROM counter c LEFT JOIN champion_list l ON c.champion_weak = l.id 
+	LEFT JOIN champion_list l2 ON c.champion_strong = l2.id WHERE champion_weak = $champ_id";
+	$stmt = $dbh->prepare($sql);
+	$stmt->execute();
+	$rcounter = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $rcounter;
+	
+}
+
+function upvote(){
+	global $dbh;
+	$data = json_decode(file_get_contents("php://input"));
+	$id = $data->counter_id;
+	$sql = "UPDATE counter SET upvote = upvote + 1 where id = $id";
+	$stmt = $dbh->prepare($sql);
+	$stmt->execute();
+	$outp = '{"id":"'.$sql.'"}'; //unecessary - for future reference
+	echo ($outp);
+}
+
+function downvote(){
+	global $dbh;
+	$data = json_decode(file_get_contents("php://input"));
+	$id = $data->counter_id;
+	$sql = "UPDATE counter SET downvote = downvote - 1 where id = $id";
+	$stmt = $dbh->prepare($sql);
+	$stmt->execute();
+}
+
 ?>
