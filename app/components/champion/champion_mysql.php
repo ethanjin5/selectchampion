@@ -25,6 +25,9 @@ case 'getInfo':
 case 'upvote':
 	upvote();
 	break;
+case 'downvote':
+	downvote();
+	break;
 }
 
 function getCounters($champ_id){
