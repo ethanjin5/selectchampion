@@ -8,36 +8,43 @@ $dbh = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
 $dbh->query('set names utf8;');
 
 switch($_GET['action']){
-case 'getInfo':
-	$champ_name = $_GET['param'];
-	$sql = "SELECT id, name, eng_name, alias, description, tags FROM champion_list where eng_name = '$champ_name'";
-	$stmt = $dbh->prepare($sql);
-	$stmt->execute();
+    case 'getInfo':
+        $champ_name = $_GET['param'];
+        $sql = "SELECT id, name, eng_name, alias, description, tags FROM champion_list where eng_name = '$champ_name'";
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute();
 
-	$rs = $stmt->fetch( PDO::FETCH_ASSOC );
-	$champ_id = $rs['id'];
-	$rcounter = getCounters($champ_id);
-
-	$outp = '{"champion":'.json_encode($rs).',"counters":'.json_encode($rcounter).'}';
-	echo($outp);
-	break;
-
-case 'upvote':
-	upvote();
-	break;
-case 'downvote':
-	downvote();
-	break;
+        $rs = $stmt->fetch( PDO::FETCH_ASSOC );
+        $outp = json_encode($rs);
+        echo($outp);
+        break;
+    case 'getCounters':
+        $outp = getCounters();
+        echo $outp;
+        break;
+    case 'upvote':
+        upvote();
+        break;
+    case 'downvote':
+        downvote();
+        break;
 }
 
-function getCounters($champ_id){
+function getCounters(){
 	global $dbh;
-	$sql = "SELECT c.id AS id, l.name AS champion_weak, l2.name AS champion_strong, upvote,downvote FROM counter c LEFT JOIN champion_list l ON c.champion_weak = l.id 
-	LEFT JOIN champion_list l2 ON c.champion_strong = l2.id WHERE champion_weak = $champ_id";
+    //$data = json_decode(file_get_contents("php://input"));
+    //$champ_id = $data->id;
+    //$type = $data->type;
+    $champ_id = $_GET['id'];
+    $type = $_GET['type'];
+	$sql = "SELECT c.id AS id, l.name AS champion_weak, l2.name AS champion_strong, upvote,downvote 
+    FROM counter c LEFT JOIN champion_list l ON c.champion_weak = l.id LEFT JOIN champion_list l2 
+    ON c.champion_strong = l2.id WHERE champion_weak = $champ_id AND type = '$type'";
 	$stmt = $dbh->prepare($sql);
 	$stmt->execute();
-	$rcounter = $stmt->fetchAll(PDO::FETCH_ASSOC);
-	return $rcounter;
+	$rs = $stmt->fetchAll( PDO::FETCH_ASSOC );
+    $outp = json_encode($rs);
+	return $outp;
 	
 }
 

@@ -1,6 +1,6 @@
 
 'use strict';
-angular.module('champion',['ngRoute', 'ngSanitize'])
+angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
 .config(function($routeProvider, $locationProvider) {
   $routeProvider
   .when('/champion/:name', {
@@ -13,37 +13,44 @@ angular.module('champion',['ngRoute', 'ngSanitize'])
 
 .controller('ChampionCtrl', function ($scope, $routeParams, $http) {
     $scope.champion_name = $routeParams.name;
-    getCounters();
-    function getCounters(){
-      $http.get("app/components/champion/champion_mysql.php?action=getInfo&param="+$routeParams.name)
-      .success(function(response) {
-        $scope.champion = response.champion;
-        $scope.counters = response.counters;
-      });
+    getInfo();
+    function getInfo(){
+        $http.get("app/components/champion/champion_mysql.php?action=getInfo&param="+$routeParams.name)
+            .success(function(response) {
+                $scope.champion = response;
+                var champ_id = response.id;
+            });
+    }
+    
+    $scope.getCounters = function(id,type){
+        $http.get('app/components/champion/champion_mysql.php?action=getCounters&id='+id+'&type='+type)
+        .success(function (response) {
+            $scope.counters = response;
+        });
     }
 
 
     //update upvote
-    $scope.upvote = function(id) {
+    $scope.upvote = function(id,champ_id,type) {
         $http.post('app/components/champion/champion_mysql.php?action=upvote', 
             {
                 'counter_id'    : id
             }
         )
         .success(function (response) {
-          getCounters();
-        })
+            $scope.getCounters(champ_id,type);
+        });
     }
 
-    $scope.downvote = function(id) {
+    $scope.downvote = function(id,champ_id,type) {
         $http.post('app/components/champion/champion_mysql.php?action=downvote', 
             {
                 'counter_id'    : id
             }
         )
         .success(function (response) {
-          getCounters();
-        })
+            $scope.getCounters(champ_id,type);
+        });
     }
 
 
