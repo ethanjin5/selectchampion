@@ -36,7 +36,7 @@
 
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 text-center">
-                        <p class="story-description" ng-repeat = "x in test[0]">{{x}}</p> 
+                        <p class="story-description">kong wei, sui yi shi yong</p> 
                         <!-- /.story-description -->
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                 <div class="row">
                     <div class="col-md-7 champion-tabs">
                         <h2>背景故事</h2>
-                        <p class="champion-description" ng-bind-html="champion.description"></p>
+                        <p class="champion-description" ng-bind-html="::champion.description"></p>
                     </div>
 
                     <div class="col-md-5">
@@ -95,18 +95,18 @@
                 <div class="row">
                     <tabset justified="true">
                         
-                            <tab heading="{{type}}" ng-repeat="type in ['All','General','上单','Mid','Bottom','Jungle']" 
-                                 ng-click ="getCounters(champion.id,type)">
+                            <tab heading="{{::type}}" ng-repeat="type in ::['All','General','上单','Mid','Bottom','Jungle']" 
+                                 ng-click ="::getCounters(champion.id,type)">
                                     <div class="champion-weak-against">
                                         <table>
-                                            <tr ng-repeat="counter in counters">
-                                                <td>{{counter.champion_weak}}</td>
-                                                <td>{{counter.champion_strong}}</td>
+                                            <tr ng-repeat="counter in ::counters">
+                                                <td>{{::counter.champion_weak}}</td>
+                                                <td>{{::counter.champion_strong}}</td>
                                                 <td><button class="btn btn-default" ng-click="upvote(counter.id,champion.id,type)">
-                                                    <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>{{counter.upvote}}
+                                                    <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>{{::counter.upvote}}
                                                 </button></td>
                                                 <td><button class="btn btn-default" ng-click="downvote(counter.id,champion.id,type)">
-                                                    <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>{{counter.downvote}}
+                                                    <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>{{::counter.downvote}}
                                                 </button></td>
                                             </tr>
                                         </table>        
