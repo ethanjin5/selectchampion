@@ -36,7 +36,7 @@
 
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 text-center">
-                        <p class="story-description">kong wei, sui yi shi yong</p> 
+                        <p class="story-description">kong wei, sui yi shi yong</p>
                         <!-- /.story-description -->
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                                  ng-click ="::getCounters(champion.id,type)">
                                     <div class="champion-weak-against">
                                         <table>
-                                            <tr ng-repeat="counter in ::counters">
+                                            <tr ng-repeat="counter in counters">
                                                 <td>{{::counter.champion_weak}}</td>
                                                 <td>{{::counter.champion_strong}}</td>
                                                 <td><button class="btn btn-default" ng-click="upvote(counter.id,champion.id,type)">
