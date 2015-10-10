@@ -52,7 +52,21 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
             $scope.getCounters(champ_id,type);
         });
     }
+    
+    $scope.hoverIn = function(counter_id){
+        $http.get('app/components/champion/champion_mysql.php?action=getTips&counter_id='+counter_id)
+        .success(function (response) {
+            $scope.tips = response;
+            if(!response.length){
+                $scope.tips = [{"tips":"no tips yet, be the first to submit a tip!"}];
+            }
+        });
+        this.hoverEdit = true;
+    }
 
-
+    $scope.hoverOut = function(){
+        this.hoverEdit = false;
+    }
+    
 
 });

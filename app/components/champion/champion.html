@@ -100,7 +100,7 @@
                                     <div class="champion-weak-against">
                                         <table>
                                             <tr ng-repeat="counter in counters">
-                                                <td>{{::counter.champion_weak}}</td>
+                                                
                                                 <td>{{::counter.champion_strong}}</td>
                                                 <td><button class="btn btn-default" ng-click="upvote(counter.id,champion.id,type)">
                                                     <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>{{::counter.upvote}}
@@ -108,6 +108,19 @@
                                                 <td><button class="btn btn-default" ng-click="downvote(counter.id,champion.id,type)">
                                                     <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>{{::counter.downvote}}
                                                 </button></td>
+                                                <td><button class="btn btn-black" ng-mouseover="hoverIn(counter.id)" ng-mouseleave="hoverOut()">
+                                                    Tips
+                                                    </button>
+                                                    <div ng-show="hoverEdit" class="popover left">
+                                                        <div class="arrow"></div>
+                                                        <h3 class="popover-title">Popover Header</h3>
+                                                        <div class="popover-content">
+                                                            <div class="col-md-10 col-md-offset-1" ng-repeat="tip in tips">
+                                                                {{tip.tips}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
                                             </tr>
                                         </table>        
                                     </div>
