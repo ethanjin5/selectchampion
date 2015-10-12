@@ -83,7 +83,7 @@ function downvote(){
 function getTips(){
     global $dbh;
     $counter_id = $_GET['counter_id'];
-    $sql = "SELECT id, tips, time, vote, author FROM counter_tips where counter_id = $counter_id ORDER BY vote LIMIT 5";
+    $sql = "SELECT id, tip, date_time, author, vote FROM counter_tips where counter_id = $counter_id ORDER BY vote LIMIT 5";
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
     $rs = $stmt->fetchAll( PDO::FETCH_ASSOC);
