@@ -93,10 +93,11 @@
         <section class="bg-white story champion-counter">
             <div class="container">
                 <div class="row">
-                    <tabset justified="true"> <!--TODO: justified or not? width setted to 480-->
-                            <tab heading="{{::type}}" ng-repeat="type in ::['All','General','上单','Mid','Bottom','Jungle']" 
+                    <uib-tabset justified="true" ng-init="getCounters(champ_id,'All')"> <!--TODO: justified or not? width setted to 480-->
+                        <!--TODO: ng-init not working-->
+                            <uib-tab heading="{{::type}}" ng-repeat="type in ::['All','General','上单','Mid','Bottom','Jungle']" 
                                  ng-click ="::getCounters(champion.id,type)">
-                                    <div class="champion-against custom-col-md-6" ng-repeat="(key,counter_data) in counters"><!--TODO:col-md-6 making tab not extending in height-->
+                                    <div class="champion-against col-md-6" ng-repeat="(key,counter_data) in counters"><!--TODO:col-md-6 making tab not extending in height-->
                                         <table>
                                             <thead>{{::champion.name}} is {{::key}} against:</thead>
                                             <tr ng-repeat="counter in counter_data">
@@ -107,25 +108,24 @@
                                                 <td><button class="btn btn-default" ng-click="downvote(counter.id,champion.id,type)">
                                                     <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>{{::counter.downvote}}
                                                 </button></td>
-                                                <td><button class="btn btn-black" ng-mouseover="hoverIn(counter.id)" ng-mouseleave="hoverOut()">
-                                                    Tips
-                                                    </button>
-                                                    <div ng-show="hoverEdit" class="popover left">
-                                                        <div class="arrow"></div>
-                                                        <h3 class="popover-title">Popover Header</h3>
-                                                        <div class="popover-content">
-                                                            <div class="col-md-10 col-md-offset-1" ng-repeat="tip in tips">
-                                                                {{tip.tip}}
+                                                <td><button uib-popover-template="TipPopover.templateUrl" 
+                                                            popover-title="Tips:" type="button" 
+                                                            class="btn btn-black" ng-click="getTips(counter.id)">Tips</button>
+
+                                                        <script type="text/ng-template" id="PopoverTipTemplate.html">
+                                                            <div ng-repeat="tip in tips">{{tip.tip}}</div>
+                                                            <div class="submit-tip">
+                                                              <label>Submit Tip:</label>
+                                                              <input type="text" placeholder="tips against {{::counter.champion_against}}:" class="form-control">
                                                             </div>
-                                                        </div>
-                                                    </div>
+                                                        </script>
                                                 </td>
                                             </tr>
                                         </table>        
                                     </div>
-                            </tab>
+                            </uib-tab>
                         
-                      </tabset>
+                      </uib-tabset>
  
                 </div>
             </div>

@@ -1917,11 +1917,6 @@ Site's Personal style
 	padding-top: 10px;
 }
 
-.custom-col-md-6{ /*TODO: need more styles on responsiveness for mobile after element styles are set */
-    width:50%;
-    float: left;
-}
-
 @media (min-width: 992px){
 .champion-item-list .col-md-2 {
     width: 12.5%;

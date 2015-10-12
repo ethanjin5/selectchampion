@@ -14,14 +14,15 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
 .controller('ChampionCtrl', function ($scope, $routeParams, $http) {
     $scope.champion_name = $routeParams.name;
     getInfo();
+    
     function getInfo(){
         $http.get("app/components/champion/champion_mysql.php?action=getInfo&param="+$routeParams.name)
             .success(function(response) {
                 $scope.champion = response;
-                var champ_id = response.id;
+                $scope.champ_id = response.id;
             });
     }
-    
+
     $scope.getCounters = function(id,type){
         $http.get('app/components/champion/champion_mysql.php?action=getCounters&id='+id+'&type='+type)
         .success(function (response) {
@@ -53,20 +54,20 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
         });
     }
     
-    $scope.hoverIn = function(counter_id){
+    $scope.getTips = function(counter_id){
         $http.get('app/components/champion/champion_mysql.php?action=getTips&counter_id='+counter_id)
         .success(function (response) {
             $scope.tips = response;
             if(!response.length){
-                $scope.tips = [{"tips":"no tips yet, be the first to submit a tip!"}];
+                $scope.tips = [{"tip":"no tips yet, be the first to submit a tip!"}];
             }
         });
-        this.hoverEdit = true;
     }
 
-    $scope.hoverOut = function(){
-        this.hoverEdit = false;
-    }
+    $scope.TipPopover = {
+        content: "Hello",
+        templateUrl: 'PopoverTipTemplate.html',
+      };
     
 
 });
