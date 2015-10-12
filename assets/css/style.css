@@ -230,6 +230,7 @@ html {
     border-top-color: transparent;
     margin-right: 3px;
     padding: 20px;
+    overflow: auto;
 }
 
 @media (min-width: 768px) {
@@ -1919,6 +1920,12 @@ Site's Personal style
 
 .counter-thumbnail{
     width:50px;
+}
+
+.champion-against tr{
+    margin-top:10px;
+    margin-bottom:10px;
+    display:block;
 }
 
 @media (min-width: 992px){

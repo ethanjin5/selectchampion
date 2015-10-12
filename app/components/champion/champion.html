@@ -100,7 +100,7 @@
                                     <div class="champion-against col-md-6" ng-repeat="(key,counter_data) in counters"><!--TODO:col-md-6 making tab not extending in height-->
                                         <table>
                                             <thead>{{::champion.name}} is {{::key}} against:</thead>
-                                            <tr ng-repeat="counter in counter_data" style="margin-bottom:20px;">
+                                            <tr ng-repeat="counter in counter_data">
                                                 <td><img ng-src="assets/img/champ_img/{{::counter.eng_name}}.png" 
                                                          class="counter-thumbnail" alt="{{::champion.name}}"></td>
                                                 <td>{{::counter.champion_against}}</td>
@@ -110,9 +110,9 @@
                                                 <td><button class="btn btn-default" ng-click="downvote(counter.id,champion.id,type)">
                                                     <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>{{::counter.downvote}}
                                                 </button></td>
-                                                <td><button uib-popover-template="TipPopover.templateUrl" popover-placement="left"
+                                                <td><a href="/champion/{{::champion.eng_name}}/tips/{{::counter.id}}"><button uib-popover-template="TipPopover.templateUrl" popover-placement="left"
                                                             popover-title="Tips:" type="button" popover-trigger="mouseenter"
-                                                            class="btn btn-black" ng-mouseenter="getTips(counter.id)">Tips</button>
+                                                            class="btn btn-black" ng-mouseenter="getTips(counter.id)">Tips</button></a>
 
                                                         <script type="text/ng-template" id="PopoverTipTemplate.html">
                                                             <div ng-repeat="tip in tips">{{tip.tip}}</div>
