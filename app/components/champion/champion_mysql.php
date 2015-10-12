@@ -42,13 +42,13 @@ function getCounters(){
     $type_sql = " AND type ='".$_GET['type']."'";
     if ($_GET['type']=='All'){$type_sql = "";}
     
-	$sql = "SELECT c.id AS id, l.name AS champion_against, upvote,downvote 
+	$sql = "SELECT c.id AS id, l.name AS champion_against, l.eng_name AS eng_name, upvote,downvote 
     FROM counter c LEFT JOIN champion_list l ON c.champion_strong = l.id 
     WHERE champion_weak = $champ_id AND category = 'strong'".$type_sql;
 	$stmt = $dbh->prepare($sql);
 	$stmt->execute();
 	$rweak = $stmt->fetchAll( PDO::FETCH_ASSOC );
-    $sql = "SELECT c.id AS id, l.name AS champion_against, upvote,downvote 
+    $sql = "SELECT c.id AS id, l.name AS champion_against, l.eng_name AS eng_name, upvote,downvote 
     FROM counter c LEFT JOIN champion_list l ON c.champion_weak = l.id 
     WHERE champion_strong = $champ_id AND category = 'strong'".$type_sql;
 	$stmt = $dbh->prepare($sql);

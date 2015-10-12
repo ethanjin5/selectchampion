@@ -101,6 +101,8 @@
                                         <table>
                                             <thead>{{::champion.name}} is {{::key}} against:</thead>
                                             <tr ng-repeat="counter in counter_data">
+                                                <td><img ng-src="assets/img/champ_img/{{::counter.eng_name}}.png" 
+                                                         class="counter-thumbnail" alt="{{::champion.name}}"></td>
                                                 <td>{{::counter.champion_against}}</td>
                                                 <td><button class="btn btn-default" ng-click="upvote(counter.id,champion.id,type)">
                                                     <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>{{::counter.upvote}}

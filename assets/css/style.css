@@ -837,7 +837,7 @@ section {
 
 .champion-item .item-description span.item-name {
     margin-bottom: 2px;
-    font-size: 13.5px;
+    font-size: 13px;
     color: #474747;
 }
 
@@ -1915,6 +1915,10 @@ Site's Personal style
 	font-size: 24px;
 	display: inline-block;
 	padding-top: 10px;
+}
+
+.counter-thumbnail{
+    width:50px;
 }
 
 @media (min-width: 992px){
