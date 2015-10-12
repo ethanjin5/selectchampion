@@ -28,6 +28,9 @@ switch($_GET['action']){
     case 'downvote':
         downvote();
         break;
+    case 'getTips':
+        echo getTips();
+        break;
 }
 
 function getCounters(){
@@ -77,4 +80,14 @@ function downvote(){
 	$stmt->execute();
 }
 
+function getTips(){
+    global $dbh;
+    $counter_id = $_GET['counter_id'];
+    $sql = "SELECT id, tips, time, vote, author FROM counter_tips where counter_id = $counter_id ORDER BY vote LIMIT 5";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+    $rs = $stmt->fetchAll( PDO::FETCH_ASSOC);
+    $outp = json_encode($rs);
+    return $outp;
+}
 ?>
