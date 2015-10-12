@@ -93,21 +93,21 @@
         <section class="bg-white story champion-counter">
             <div class="container">
                 <div class="row">
-                    <tabset justified="true">
-                        
+                    <tabset justified="true"> <!--TODO: justified or not? width setted to 480-->
                             <tab heading="{{::type}}" ng-repeat="type in ::['All','General','上单','Mid','Bottom','Jungle']" 
                                  ng-click ="::getCounters(champion.id,type)">
-                                    <div class="champion-weak-against">
+                                    <div class="champion-against custom-col-md-6" ng-repeat="(key,counter_data) in counters"><!--TODO:col-md-6 making tab not extending in height-->
                                         <table>
-                                            <tr ng-repeat="counter in counters">
-                                                <td>{{::counter.champion_weak}}</td>
-                                                <td>{{::counter.champion_strong}}</td>
+                                            <thead>{{::champion.name}} is {{::key}} against:</thead>
+                                            <tr ng-repeat="counter in counter_data">
+                                                <td>{{::counter.champion_against}}</td>
                                                 <td><button class="btn btn-default" ng-click="upvote(counter.id,champion.id,type)">
                                                     <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>{{::counter.upvote}}
                                                 </button></td>
                                                 <td><button class="btn btn-default" ng-click="downvote(counter.id,champion.id,type)">
                                                     <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>{{::counter.downvote}}
                                                 </button></td>
+                                                <td><button class="btn btn-black">Tips</button></td>
                                             </tr>
                                         </table>        
                                     </div>

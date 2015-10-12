@@ -36,14 +36,23 @@ function getCounters(){
     //$champ_id = $data->id;
     //$type = $data->type;
     $champ_id = $_GET['id'];
-    $type = $_GET['type'];
-	$sql = "SELECT c.id AS id, l.name AS champion_weak, l2.name AS champion_strong, upvote,downvote 
-    FROM counter c LEFT JOIN champion_list l ON c.champion_weak = l.id LEFT JOIN champion_list l2 
-    ON c.champion_strong = l2.id WHERE champion_weak = $champ_id AND type = '$type'";
+    $type_sql = " AND type ='".$_GET['type']."'";
+    if ($_GET['type']=='All'){$type_sql = "";}
+    
+	$sql = "SELECT c.id AS id, l.name AS champion_against, upvote,downvote 
+    FROM counter c LEFT JOIN champion_list l ON c.champion_strong = l.id 
+    WHERE champion_weak = $champ_id AND category = 'strong'".$type_sql;
 	$stmt = $dbh->prepare($sql);
 	$stmt->execute();
-	$rs = $stmt->fetchAll( PDO::FETCH_ASSOC );
-    $outp = json_encode($rs);
+	$rweak = $stmt->fetchAll( PDO::FETCH_ASSOC );
+    $sql = "SELECT c.id AS id, l.name AS champion_against, upvote,downvote 
+    FROM counter c LEFT JOIN champion_list l ON c.champion_weak = l.id 
+    WHERE champion_strong = $champ_id AND category = 'strong'".$type_sql;
+	$stmt = $dbh->prepare($sql);
+	$stmt->execute();
+	$rstrong = $stmt->fetchAll( PDO::FETCH_ASSOC );
+    
+    $outp = '{"weak":'.json_encode($rweak).',"strong":'.json_encode($rstrong).'}';
 	return $outp;
 	
 }

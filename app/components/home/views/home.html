@@ -23,7 +23,7 @@
                 <div class="champion-item-list" infinite-scroll="loadMore()" infinite-scroll-distance="2">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="champion in ::champions | filter: searchKeyword">
+                        <div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="champion in champions | filter: searchKeyword">
                             <div class="champion-item">
                                 <div class="item-image">
                                     <a href="/champion/{{::champion.eng_name}}">

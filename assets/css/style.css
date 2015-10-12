@@ -222,7 +222,7 @@ html {
 .nav-tabs>li>a {
     border-radius: 0px;
     margin: 0px;
-    padding: 10px 24px;
+    padding: 10px 4px;
 }
 
 .tab-content {
@@ -1898,7 +1898,7 @@ Tags: responsive layout, multiple-page
 
 
 /*
-Feifan's Personal style
+Site's Personal style
 */
 .purple{
     color: #574D86;
@@ -1917,8 +1917,19 @@ Feifan's Personal style
 	padding-top: 10px;
 }
 
+.custom-col-md-6{ /*TODO: need more styles on responsiveness for mobile after element styles are set */
+    width:50%;
+    float: left;
+}
+
 @media (min-width: 992px){
 .champion-item-list .col-md-2 {
     width: 12.5%;
+}
+
+}
+@media (max-width:768px){
+.custom-col-md-6{
+    width:100%;
 }
 }
