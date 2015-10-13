@@ -1,0 +1,78 @@
+<div id="multiple-blog-page" ng-init="getTips()">
+
+
+    <!-- header begin -->
+    <header class="page-head">
+        <div class="header-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <ol class="breadcrumb">
+                            <li><a href="/">home</a></li>
+                            <li><a href="/blog">blog</a></li>
+                        </ol> <!-- end of /.breadcrumb -->
+
+                    </div>
+                </div>
+            </div> <!-- /.container -->
+        </div> <!-- /.header-wrapper -->
+    </header> <!-- /.page-head (header end) -->
+
+    <section>
+        <div class="main-content">
+
+        <!-- begin our story section -->
+        <section class="bg-white story">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="champion-tips" ng-repeat ="tip in tips">
+                            <div class="tip-vote-div col-md-2">
+                                <div class="tip-vote-num col-md-6">{{::tip.vote}}</div>
+                                <div class="tip-vote-icon col-md-6">
+                                <button type="button" class="btn-xs btn-default" aria-label="Upvote" 
+                                        ng-click="upvote(tip.id,tip.counter_id)">
+                                  <span class="glyphicon glyphicon-menu-up"></span>
+                                </button>
+                                <button type="button" class="btn-xs btn-default" aria-label="Downvote" 
+                                        ng-click="downvote(tip.id,tip.counter_id)">
+                                  <span class="glyphicon glyphicon-menu-down"></span>
+                                </button>
+                                </div>
+                            </div>
+                            <div class="tip-content-div col-md-10">
+                                {{::tip.tip}} <br>Submitted By <span class="grey">{{::tip.author}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="submit-form">
+                        <form name='add_tip' ng-submit = "submitTip(counter_id)">
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="form-group col-md-6 col-sm-12">
+                                        <input  name="name" ng-model="tip.name" type="text" class="form-control" id="name" required="required" placeholder="Full Name">
+                                    </div>
+
+                                    <div class="form-group col-md-6 col-sm-12">
+                                        <input name="email" ng-model="tip.email" type="email" class="form-control" id="email" placeholder="Email Address">
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-8 col-md-offset-2">
+                                    <textarea name="tip" ng-model="tip.tip" type="text" class="form-control" id="tip" rows="5" required="required" placeholder="Type here message"></textarea>
+                                    <button type="submit" id="submit" name="submit" class="btn btn-black">submit tip</button>
+                                </div>
+                            </div>
+
+                        </form> <!-- form end -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+    </section>
+</div> 
+<!-- end of /#multiple-blog-page -->
+

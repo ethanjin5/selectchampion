@@ -65,8 +65,8 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
     }
 
     $scope.TipPopover = {
-        content: "Hello",
-        templateUrl: 'PopoverTipTemplate.html',
+        content: 'load $scope.tips', //TODO: tips loading are slower than popover, need a better method
+        templateUrl: 'PopoverTipTemplate.html'
       };
     
 

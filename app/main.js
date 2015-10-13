@@ -1,6 +1,6 @@
 
 'use strict';
-var app = angular.module('ChampionCounter', ['ngRoute','infinite-scroll','champion']);
+var app = angular.module('ChampionCounter', ['ngRoute','infinite-scroll','champion','tips']);
 
 app.config(function ($routeProvider, $locationProvider) {
 	$routeProvider

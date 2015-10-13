@@ -1928,6 +1928,26 @@ Site's Personal style
     display:block;
 }
 
+.champion-tips .grey{
+    color:darkgrey;
+}
+
+.champion-tips{
+    overflow: hidden;
+    margin-bottom: 10px;
+    
+}
+
+.btn-xs{
+    border:0px;
+    border-radius: 0px;
+}
+
+.no-padding{
+    padding: 0;
+}
+
+
 @media (min-width: 992px){
 .champion-item-list .col-md-2 {
     width: 12.5%;
