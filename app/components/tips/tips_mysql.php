@@ -8,6 +8,20 @@ $dbh = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
 $dbh->query('set names utf8;');
 
 switch($_GET['action']){
+    case 'getInfo':
+        $counter_id = $_GET['param'];
+        $sql = "SELECT c.id AS id, l1.name AS champion_one,l2.name AS champion_two, 
+        l1.eng_name AS eng_name_one, l2.eng_name AS eng_name_two, upvote,downvote 
+        FROM counter c LEFT JOIN champion_list l1 ON c.champion_weak = l1.id 
+        LEFT JOIN champion_list l2 ON c.champion_strong = l2.id
+        WHERE c.id = $counter_id";
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute();
+
+        $rs = $stmt->fetch( PDO::FETCH_ASSOC );
+        $outp = json_encode($rs);
+        echo($outp);
+        break;
     case 'getTips':
         $outp = getTips();
         echo($outp);

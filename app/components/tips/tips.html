@@ -7,12 +7,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-
                         <ol class="breadcrumb">
                             <li><a href="/">home</a></li>
-                            <li><a href="/blog">blog</a></li>
+                            <li><a href="/champion/{{type ? counter.eng_name_one : counter.eng_name_two}}">
+                                {{type ? counter.champion_one : counter.champion_two}}</a></li>
+                            <li><a href="/blog">Tips</a></li>
                         </ol> <!-- end of /.breadcrumb -->
-
                     </div>
                 </div>
             </div> <!-- /.container -->
@@ -27,6 +27,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
+                        <div class="counter-info-div">
+                            <a href="/champion/{{::counter.eng_name_one}}">
+                                <img ng-src="assets/img/champ_img/{{::counter.eng_name_one}}.png" class="counter-thumbnail" 
+                                 alt="{{::counter.champion_one}}">{{::counter.champion_one}}</a> VS 
+                            <a href="/champion/{{::counter.eng_name_two}}">
+                                <img ng-src="assets/img/champ_img/{{::counter.eng_name_two}}.png" class="counter-thumbnail" 
+                                 alt="{{::counter.champion_two}}">{{::counter.champion_two}}</a>
+                        </div>
                         <div class="champion-tips" ng-repeat ="tip in tips">
                             <div class="tip-vote-div col-md-2">
                                 <div class="tip-vote-num col-md-6">{{::tip.vote}}</div>

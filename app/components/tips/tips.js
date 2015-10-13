@@ -3,7 +3,7 @@
 angular.module('tips',['ngRoute'])
 .config(function($routeProvider, $locationProvider) {
   $routeProvider
-  .when('/champion/:name/tips/:counter_id', {
+  .when('/champion/:name/tips/:type/:counter_id', {
     templateUrl: 'app/components/tips/tips.html',
     controller: 'TipsCtrl'
   })
@@ -13,7 +13,19 @@ angular.module('tips',['ngRoute'])
 
 .controller('TipsCtrl', function ($scope, $routeParams, $http) {
     $scope.champion_name = $routeParams.name;
+    if ($routeParams.type =='weak'){
+        $scope.type = true;
+    }
+    else{$scope.type=false;}
     $scope.counter_id = $routeParams.counter_id;
+    getInfo();
+    
+    function getInfo(){
+        $http.get("app/components/tips/tips_mysql.php?action=getInfo&param="+$routeParams.counter_id)
+            .success(function(response) {
+                $scope.counter = response;
+            });
+    }
     $scope.getTips = function(){
         $http.get("app/components/tips/tips_mysql.php?action=getTips&param="+$routeParams.counter_id)
             .success(function(response) {
