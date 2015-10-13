@@ -112,10 +112,10 @@
                                                 </button></td>
                                                 <td><a href="/champion/{{::champion.eng_name}}/tips/{{::counter.id}}"><button ng-mouseenter="getTips(counter.id)" uib-popover-template="TipPopover.templateUrl" popover-placement="left"
                                                             popover-title="Tips:" type="button" popover-trigger="mouseenter"
-                                                            class="btn btn-black">Tips</button></a>
+                                                            class="btn btn-black" ng-cloak>Tips</button></a>
 
                                                         <script type="text/ng-template" id="PopoverTipTemplate.html">
-                                                            <div ng-repeat="tip in tips" ng-cloak>{{tip.tip}}</div>
+                                                            <div ng-repeat="tip in tips">{{tip.tip}}</div>
                                                         </script>
                                                 </td>
                                             </tr>
