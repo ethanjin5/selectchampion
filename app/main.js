@@ -1,6 +1,6 @@
 
 'use strict';
-var app = angular.module('ChampionCounter', ['ngRoute','infinite-scroll','champion','tips']);
+var app = angular.module('ChampionCounter', ['ngRoute','infinite-scroll','champion','tips','tier']);
 
 app.config(function ($routeProvider, $locationProvider) {
 	$routeProvider
@@ -9,11 +9,7 @@ app.config(function ($routeProvider, $locationProvider) {
 		//Champion Detail
 		.when("/champion", {templateUrl: "app/components/home/views/home.html", controller: "HomeCtrl"})
 		// Pages
-		.when("/about", {templateUrl: "app/components/home/views/about.html", controller: "PageCtrl"})
 		.when("/contact", {templateUrl: "app/components/home/views/contactus.html", controller: "PageCtrl"})
-		.when("/service", {templateUrl: "app/components/home/views/service.html", controller: "PageCtrl"})
-		.when("/appointment", {templateUrl: "app/components/home/views/appointment.html", controller: "PageCtrl"})
-		.when("/comingsoon", {templateUrl: "app/components/home/views/coming_soon.html", controller: "PageCtrl"})
 		.when("/faq", {templateUrl: "app/components/home/views/faq.html", controller: "PageCtrl"})
 		/* etc… routes to other pages… */
 		// Blog

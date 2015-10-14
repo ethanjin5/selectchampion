@@ -1947,6 +1947,10 @@ Site's Personal style
     padding: 0;
 }
 
+.tier_champion{
+    display:inline-block;
+    margin-right: 8px;
+}
 
 @media (min-width: 992px){
 .champion-item-list .col-md-2 {
