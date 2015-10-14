@@ -11,9 +11,12 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
   $locationProvider.html5Mode(true);
 })
 
-.controller('ChampionCtrl', function ($scope, $routeParams, $http) {
+.controller('ChampionCtrl', function ($scope, $routeParams, $http, $timeout) {
     $scope.champion_name = $routeParams.name;
     getInfo();
+    $timeout(function(){
+        $scope.getCounters($scope.champ_id,'All');
+    });
     
     function getInfo(){
         $http.get("app/components/champion/champion_mysql.php?action=getInfo&param="+$routeParams.name)
@@ -29,7 +32,7 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
             $scope.counters = response;
         });
     }
-
+    
 
     //update upvote
     $scope.upvote = function(id,champ_id,type) {
@@ -68,6 +71,7 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
         content: 'load $scope.tips', //TODO: tips loading are slower than popover, need a better method
         templateUrl: 'PopoverTipTemplate.html'
       };
+    
     
 
 });

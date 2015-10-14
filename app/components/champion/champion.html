@@ -93,7 +93,7 @@
         <section class="bg-white story champion-counter">
             <div class="container">
                 <div class="row">
-                    <uib-tabset justified="true" ng-init="getCounters(champ_id,'All')"> <!--TODO: justified or not? width setted to 480-->
+                    <uib-tabset justified="true"> <!--TODO: justified or not? width setted to 480-->
                         <!--TODO: ng-init not working-->
                             <uib-tab heading="{{::type}}" ng-repeat="type in ::['All','General','上单','Mid','Bottom','Jungle']" 
                                  ng-click ="::getCounters(champion.id,type)">
