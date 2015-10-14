@@ -16,7 +16,7 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
     getInfo();
     $timeout(function(){
         $scope.getCounters($scope.champ_id,'All');
-    });
+    },500);
     
     function getInfo(){
         $http.get("app/components/champion/champion_mysql.php?action=getInfo&param="+$routeParams.name)
