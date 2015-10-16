@@ -15,7 +15,7 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
     $scope.champion_name = $routeParams.name;
     getInfo();
     $timeout(function(){
-        $scope.getCounters($scope.champ_id,'All');
+        $scope.getCounters($scope.champ_id,'全部');
     },500);
     
     function getInfo(){

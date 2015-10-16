@@ -95,7 +95,7 @@
                 <div class="row">
                     <uib-tabset justified="true"> <!--TODO: justified or not? width setted to 480-->
                         <!--TODO: ng-init not working-->
-                            <uib-tab heading="{{::type}}" ng-repeat="type in ::['All','General','上单','Mid','Bottom','Jungle']" 
+                            <uib-tab heading="{{::type}}" ng-repeat="type in ::['全部','综合','上单','中单','下路','打野']" 
                                  ng-click ="::getCounters(champion.id,type)">
                                     <div class="champion-against col-md-6" ng-repeat="(key,counter_data) in counters"><!--TODO:col-md-6 making tab not extending in height-->
                                         <table>

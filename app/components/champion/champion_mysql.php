@@ -1,6 +1,6 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
+header("Content-Type: application/json; charset=gb2312");
 
 require("/home/feifansnf/opt/selectchampion/mysql_config.php");
 
@@ -40,17 +40,17 @@ function getCounters(){
     //$type = $data->type;
     $champ_id = $_GET['id'];
     $type_sql = " AND type ='".$_GET['type']."'";
-    if ($_GET['type']=='All'){$type_sql = "";}
+    if ($_GET['type']=="全部"){$type_sql = "";}
     
 	$sql = "SELECT c.id AS id, l.name AS champion_against, l.eng_name AS eng_name, upvote,downvote 
     FROM counter c LEFT JOIN champion_list l ON c.champion_strong = l.id 
-    WHERE champion_weak = $champ_id AND category = 'strong'".$type_sql;
+    WHERE champion_weak = $champ_id AND category = 'strong'".$type_sql." LIMIT 10";
 	$stmt = $dbh->prepare($sql);
 	$stmt->execute();
 	$rweak = $stmt->fetchAll( PDO::FETCH_ASSOC );
     $sql = "SELECT c.id AS id, l.name AS champion_against, l.eng_name AS eng_name, upvote,downvote 
     FROM counter c LEFT JOIN champion_list l ON c.champion_weak = l.id 
-    WHERE champion_strong = $champ_id AND category = 'strong'".$type_sql;
+    WHERE champion_strong = $champ_id AND category = 'strong'".$type_sql." LIMIT 12";
 	$stmt = $dbh->prepare($sql);
 	$stmt->execute();
 	$rstrong = $stmt->fetchAll( PDO::FETCH_ASSOC );
