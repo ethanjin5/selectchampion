@@ -104,16 +104,16 @@
                                                 <td><a href="/champion/{{::counter.eng_name}}">
                                                     <img ng-src="assets/img/champ_img/{{::counter.eng_name}}.png" 
                                                          class="counter-thumbnail" alt="{{::champion.name}}"></a></td>
-                                                <td><a href="/champion/{{::counter.eng_name}}">{{::counter.champion_against}}</a></td>
-                                                <td><button class="btn btn-default" ng-click="upvote(counter.id,champion.id,type)">
+                                                <td class="counter-name"><a href="/champion/{{::counter.eng_name}}">{{::counter.champion_against}}</a></td>
+                                                <td><button class="btn btn-default vote-btn" ng-click="upvote(counter.id,champion.id,type)">
                                                     <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>{{::counter.upvote}}
                                                 </button></td>
-                                                <td><button class="btn btn-default" ng-click="downvote(counter.id,champion.id,type)">
+                                                <td><button class="btn btn-default vote-btn" ng-click="downvote(counter.id,champion.id,type)">
                                                     <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>{{::counter.downvote}}
                                                 </button></td>
                                                 <td><a href="/champion/{{::champion.eng_name}}/tips/{{::key}}/{{::counter.id}}"><button ng-mouseenter="getTips(counter.id)" uib-popover-template="TipPopover.templateUrl" popover-placement="left"
                                                             popover-title="Tips:" type="button" popover-trigger="mouseenter"
-                                                            class="btn btn-black" ng-cloak>Tips</button></a>
+                                                            class="btn btn-black vote-btn" ng-cloak>Tips</button></a>
 
                                                         <script type="text/ng-template" id="PopoverTipTemplate.html">
                                                             <div ng-repeat="tip in tips">{{tip.tip}}</div>

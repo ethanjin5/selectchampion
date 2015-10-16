@@ -1927,7 +1927,16 @@ Site's Personal style
     margin-bottom:10px;
     display:block;
 }
-
+.champion-against td{
+    padding-right:1px;
+}
+.champion-against .counter-name{
+    width:150px;
+    padding-left:20px;
+}
+.champion-against .vote-btn{
+    width:90px;
+}
 .champion-tips .grey{
     color:darkgrey;
 }
@@ -1953,13 +1962,17 @@ Site's Personal style
 }
 
 @media (min-width: 992px){
-.champion-item-list .col-md-2 {
-    width: 12.5%;
+    .champion-item-list .col-md-2 {
+        width: 12.5%;
+    }
 }
 
-}
 @media (max-width:768px){
-.custom-col-md-6{
-    width:100%;
-}
+    .custom-col-md-6{
+        width:100%;
+    }
+    .champion-against .vote-btn{
+        width:75px;
+        padding: 10px 0px;
+    }
 }
