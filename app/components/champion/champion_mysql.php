@@ -42,17 +42,18 @@ function getCounters(){
     $type_sql = " AND type ='".$_GET['type']."'";
     if ($_GET['type']=="全部"){$type_sql = "";}
     
-	$sql = "SELECT c.id AS id, l.name AS champion_against, l.eng_name AS eng_name, upvote,downvote 
+	$sql = "SELECT * FROM (SELECT c.id AS id, l.name AS champion_against, l.eng_name AS eng_name, upvote,downvote 
     FROM counter c LEFT JOIN champion_list l ON c.champion_strong = l.id 
     WHERE champion_weak = $champ_id AND category = 'strong'".$type_sql." 
-    GROUP BY champion_against ORDER BY (upvote-downvote) DESC LIMIT 12";
+    ORDER BY (upvote-downvote) DESC LIMIT 20) x GROUP BY champion_against ORDER BY (upvote-downvote) DESC LIMIT 12";
 	$stmt = $dbh->prepare($sql);
 	$stmt->execute();
 	$rweak = $stmt->fetchAll( PDO::FETCH_ASSOC );
-    $sql = "SELECT c.id AS id, l.name AS champion_against, l.eng_name AS eng_name, upvote,downvote 
+    
+    $sql = "SELECT * FROM (SELECT c.id AS id, l.name AS champion_against, l.eng_name AS eng_name, upvote,downvote 
     FROM counter c LEFT JOIN champion_list l ON c.champion_weak = l.id 
     WHERE champion_strong = $champ_id AND category = 'strong'".$type_sql." 
-    GROUP BY champion_against ORDER BY (upvote-downvote) DESC LIMIT 12";
+    ORDER BY (upvote-downvote) DESC LIMIT 20) x GROUP BY champion_against ORDER BY (upvote-downvote) DESC LIMIT 12";
 	$stmt = $dbh->prepare($sql);
 	$stmt->execute();
 	$rstrong = $stmt->fetchAll( PDO::FETCH_ASSOC );
