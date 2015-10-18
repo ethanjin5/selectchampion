@@ -8,3 +8,7 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ /#/$1 [L]
 </IfModule>
+RewriteCond %{HTTP_HOST} ^selectchampion\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.selectchampion\.com$
+RewriteRule ^/?$ "http\:\/\/xuanyingxiong\.com" [R=301,L]
+
