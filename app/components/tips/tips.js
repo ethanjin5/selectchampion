@@ -5,12 +5,17 @@ angular.module('tips',['ngRoute'])
   $routeProvider
   .when('/champion/:name/tips/:type/:counter_id', {
     templateUrl: 'app/components/tips/tips.html',
-    controller: 'TipsCtrl'
+    controller: 'TipsCtrl',
+      title: 'Tips'
   })
   .otherwise("/404", {templateUrl: "app/components/home/views/404.html", controller: "PageCtrl"});
   $locationProvider.html5Mode(true);
 })
-
+.run(['$location', '$rootScope', function($location, $rootScope) {
+    $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
+        $rootScope.title = current.$$route.title;
+    });
+}])
 .controller('TipsCtrl', function ($scope, $routeParams, $http) {
     $scope.champion_name = $routeParams.name;
     if ($routeParams.type =='weak'){

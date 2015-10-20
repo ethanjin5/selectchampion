@@ -5,15 +5,15 @@ var app = angular.module('ChampionCounter', ['ngRoute','infinite-scroll','champi
 app.config(function ($routeProvider, $locationProvider) {
 	$routeProvider
 		// Home
-		.when("/", {templateUrl: "app/components/home/views/home.html", controller: "HomeCtrl"})
+		.when("/", {templateUrl: "app/components/home/views/home.html", controller: "HomeCtrl", title:"Home"})
 		//Champion Detail
-		.when("/champion", {templateUrl: "app/components/home/views/home.html", controller: "HomeCtrl"})
+		.when("/champion", {templateUrl: "app/components/home/views/home.html", controller: "HomeCtrl", title:"Home"})
 		// Pages
-		.when("/contact", {templateUrl: "app/components/home/views/contactus.html", controller: "PageCtrl"})
+		.when("/contact", {templateUrl: "app/components/home/views/contactus.html", controller: "PageCtrl", title:"Contact Us"})
 		.when("/faq", {templateUrl: "app/components/home/views/faq.html", controller: "PageCtrl"})
 		/* etc… routes to other pages… */
 		// Blog
-		.when("/blog", {templateUrl: "app/components/home/views/blog.html", controller: "BlogCtrl"})
+		.when("/blog", {templateUrl: "app/components/home/views/blog.html", controller: "BlogCtrl",title:"Blog"})
 		.when("/blog/article1", {templateUrl: "app/components/home/views/article1.html", controller: "BlogCtrl"})
 		.when("/blog/article2", {templateUrl: "app/components/home/views/article2.html", controller: "BlogCtrl"})
 		// else 404
@@ -24,6 +24,22 @@ app.config(function ($routeProvider, $locationProvider) {
 
 });
 
+/**
+* Controls the Home
+*/
+app.run(['$location', '$rootScope', function($location, $rootScope) {
+    $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
+        $rootScope.title = current.$$route.title;
+    });
+}])
+app.controller('HomeCtrl', function ($scope, $http) {
+    $scope.$on('$routeChangeSuccess', function (event, data) {
+            $scope.pageTitle = data.title;
+        });
+    $http.get("app/core/champion_list_mysql.php")
+        .success(function(response) {$scope.champions = response;});
+
+});
 
 /**
 * Controls the Blog
@@ -36,13 +52,6 @@ console.log("Blog Controller reporting for duty.");
 /**
 * Controls all other Pages
 */
-app.controller('HomeCtrl', function ($scope, $http) {
-
-$http.get("app/core/champion_list_mysql.php")
-    .success(function(response) {$scope.champions = response;});
-
-});
-
 app.controller('PageCtrl', function () {
 	// Activates the Carousel
 	$('.carousel').carousel({
