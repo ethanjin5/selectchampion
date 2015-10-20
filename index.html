@@ -23,6 +23,10 @@
     </head>
 
     <body>
+        <div ng-if="false">
+           <h1>Loading the application, please hold on</h1>
+           <div class='aCssSpinner'</div>
+        </div>
         <div ng-include='"app/core/templates/header.html"'></div>
         <div ng-view autoscroll="true"></div>
         <div ng-include='"app/core/templates/footer.html"'></div>
