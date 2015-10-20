@@ -23,10 +23,6 @@
     </head>
 
     <body>
-        <div ng-include='"app/core/templates/header.html"'></div>
-        <div ng-view autoscroll="true"></div>
-        <div ng-include='"app/core/templates/footer.html"'></div>
-
         <!--  Necessary scripts(vendor)  -->
         
         
@@ -42,6 +38,12 @@
         
         <!--  Necessary scripts(site)  -->
         <script src="app/main.js"></script>
+        
+        
+        <div ng-include='"app/core/templates/header.html"'></div>
+        <div ng-view autoscroll="true"></div>
+        <div ng-include='"app/core/templates/footer.html"'></div>
+        
         <script src="app/components/champion/champion.js"></script>
         <script src="app/components/tips/tips.js"></script>
         <script src="app/components/tier/tier.js"></script>
