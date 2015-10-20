@@ -23,17 +23,13 @@
     </head>
 
     <body>
-        <div ng-if="false">
-           <h1>Loading the application, please hold on</h1>
-           <div class='aCssSpinner'</div>
-        </div>
         <div ng-include='"app/core/templates/header.html"'></div>
         <div ng-view autoscroll="true"></div>
         <div ng-include='"app/core/templates/footer.html"'></div>
 
         <!--  Necessary scripts(vendor)  -->
         
-        <script type="text/javascript" src="assets/js/vendor/jquery-2.1.3.min.js"></script>
+        
         <script type="text/javascript" src="assets/js/vendor/bootstrap.min.js"></script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
@@ -50,6 +46,6 @@
         <script src="app/components/tips/tips.js"></script>
         <script src="app/components/tier/tier.js"></script>
         
-
+<script type="text/javascript" src="assets/js/vendor/jquery-2.1.3.min.js"></script>
     </body>
 </html>
