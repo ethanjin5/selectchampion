@@ -6,7 +6,7 @@ angular.module('tier',['ngRoute'])
   .when('/tier', {
       templateUrl: 'app/components/tier/tier.html',
       controller: 'TierCtrl',
-      title: 'Tier'
+      title: '排名'
   })
   .otherwise("/404", {templateUrl: "app/components/home/views/404.html", controller: "PageCtrl"});
   $locationProvider.html5Mode(true);

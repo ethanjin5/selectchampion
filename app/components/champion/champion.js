@@ -6,7 +6,7 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
   .when('/champion/:name', {
     templateUrl: 'app/components/champion/champion.html',
     controller: 'ChampionCtrl',
-    title: 'Champion'
+    title: '英雄'
   })
   .otherwise("/404", {templateUrl: "app/components/home/views/404.html", controller: "PageCtrl"});
   $locationProvider.html5Mode(true);

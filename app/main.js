@@ -5,11 +5,11 @@ var app = angular.module('ChampionCounter', ['ngRoute','infinite-scroll','champi
 app.config(function ($routeProvider, $locationProvider) {
 	$routeProvider
 		// Home
-		.when("/", {templateUrl: "app/components/home/views/home.html", controller: "HomeCtrl", title:"Home"})
+		.when("/", {templateUrl: "app/components/home/views/home.html", controller: "HomeCtrl", title:"全部英雄"})
 		//Champion Detail
-		.when("/champion", {templateUrl: "app/components/home/views/home.html", controller: "HomeCtrl", title:"Home"})
+		.when("/champion", {templateUrl: "app/components/home/views/home.html", controller: "HomeCtrl", title:"全部英雄"})
 		// Pages
-		.when("/contact", {templateUrl: "app/components/home/views/contactus.html", controller: "PageCtrl", title:"Contact Us"})
+		.when("/contact", {templateUrl: "app/components/home/views/contactus.html", controller: "PageCtrl", title:"联系我们"})
 		.when("/faq", {templateUrl: "app/components/home/views/faq.html", controller: "PageCtrl"})
 		/* etc… routes to other pages… */
 		// Blog
