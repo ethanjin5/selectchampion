@@ -1972,7 +1972,10 @@ Site's Personal style
         width:100%;
     }
     .champion-against .vote-btn{
-        width:75px;
+        width:70px;
         padding: 10px 0px;
+    }
+    .tab-content{
+        padding: 0px;
     }
 }
