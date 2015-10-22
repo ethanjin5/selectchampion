@@ -1,4 +1,4 @@
-<div id="multiple-blog-page" ng-init="getTips()">
+<div id="multiple-blog-page">
 
 
     <!-- header begin -->
@@ -9,9 +9,9 @@
                     <div class="col-md-12">
                         <ol class="breadcrumb">
                             <li><a href="/">全部英雄</a></li>
-                            <li><a href="/champion/{{type ? counter.eng_name_one : counter.eng_name_two}}">
-                                {{type ? counter.champion_one : counter.champion_two}}</a></li>
-                            <li><a href="/blog">Tips</a></li>
+                            <li><a href="/champion/{{counter.weak.eng_name}}">
+                                {{counter.weak.name}}</a></li>
+                            <li class="active">Tips</li>
                         </ol> <!-- end of /.breadcrumb -->
                     </div>
                 </div>
@@ -28,23 +28,23 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="counter-info-div">
-                            <a href="/champion/{{::counter.eng_name_one}}">
-                                <img ng-src="assets/img/champ_img/{{::counter.eng_name_one}}.png" class="counter-thumbnail" 
-                                 alt="{{::counter.champion_one}}">{{::counter.champion_one}}</a> VS 
-                            <a href="/champion/{{::counter.eng_name_two}}">
-                                <img ng-src="assets/img/champ_img/{{::counter.eng_name_two}}.png" class="counter-thumbnail" 
-                                 alt="{{::counter.champion_two}}">{{::counter.champion_two}}</a>
+                            <a href="/champion/{{::counter.weak.eng_name}}">
+                                <img ng-src="assets/img/champ_img/{{::counter.weak.eng_name}}.png" class="counter-thumbnail" 
+                                 alt="{{::counter.weak.name}}">{{::counter.weak.name}}</a> VS 
+                            <a href="/champion/{{::counter.strong.eng_name}}">
+                                <img ng-src="assets/img/champ_img/{{::counter.strong.eng_name}}.png" class="counter-thumbnail" 
+                                 alt="{{::counter.strong.name}}">{{::counter.strong.name}}</a>
                         </div>
                         <div class="champion-tips" ng-repeat ="tip in tips">
                             <div class="tip-vote-div col-md-2">
                                 <div class="tip-vote-num col-md-6">{{::tip.vote}}</div>
                                 <div class="tip-vote-icon col-md-6">
                                 <button type="button" class="btn-xs btn-default" aria-label="Upvote" 
-                                        ng-click="upvote(tip.id,tip.counter_id)">
+                                        ng-click="upvote(tip.id)">
                                   <span class="glyphicon glyphicon-menu-up"></span>
                                 </button>
                                 <button type="button" class="btn-xs btn-default" aria-label="Downvote" 
-                                        ng-click="downvote(tip.id,tip.counter_id)">
+                                        ng-click="downvote(tip.id)">
                                   <span class="glyphicon glyphicon-menu-down"></span>
                                 </button>
                                 </div>
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <div class="submit-form">
-                        <form name='add_tip' ng-submit = "submitTip(counter_id)">
+                        <form name='add_tip' ng-submit = "submitTip(type,counter.weak.id,counter.strong.id)">
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
                                     <div class="form-group col-md-6 col-sm-12">

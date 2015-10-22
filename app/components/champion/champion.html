@@ -111,7 +111,7 @@
                                                 <td><button class="btn btn-default vote-btn" ng-click="downvote(counter.id,champion.id,type)">
                                                     <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>{{::counter.downvote}}
                                                 </button></td>
-                                                <td><a href="/champion/{{::champion.eng_name}}/tips/{{::key}}/{{::counter.id}}"><button ng-mouseenter="getTips(counter.id)" uib-popover-template="TipPopover.templateUrl" popover-placement="left"
+                                                <td><a href="/champion/tips/{{::key}}/{{::champion.eng_name}}/{{::counter.eng_name}}"><button ng-mouseenter="getTips(counter.champion_weak, counter.champion_strong)" uib-popover-template="TipPopover.templateUrl" popover-placement="left"
                                                             popover-title="Tips:" type="button" popover-trigger="mouseenter"
                                                             class="btn btn-black vote-btn" ng-cloak>Tips</button></a>
 

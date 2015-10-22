@@ -62,8 +62,8 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
         });
     }
     
-    $scope.getTips = function(counter_id){
-        $http.get('app/components/champion/champion_mysql.php?action=getTips&counter_id='+counter_id)
+    $scope.getTips = function(champion_weak,champion_strong){
+        $http.get('app/components/champion/champion_mysql.php?action=getTips&weak='+champion_weak+'&strong='+champion_strong)
         .success(function (response) {
             $scope.tips = response;
             if(!response.length){

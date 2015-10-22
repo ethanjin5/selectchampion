@@ -9,17 +9,19 @@ $dbh->query('set names utf8;');
 
 switch($_GET['action']){
     case 'getInfo':
-        $counter_id = $_GET['param'];
-        $sql = "SELECT c.id AS id, l1.name AS champion_one,l2.name AS champion_two, 
-        l1.eng_name AS eng_name_one, l2.eng_name AS eng_name_two, upvote,downvote 
-        FROM counter c LEFT JOIN champion_list l1 ON c.champion_weak = l1.id 
-        LEFT JOIN champion_list l2 ON c.champion_strong = l2.id
-        WHERE c.id = $counter_id";
+        $champion_weak = $_GET['weak'];
+        $champion_strong = $_GET['strong'];
+        $sql = "SELECT id, name, eng_name FROM champion_list where eng_name = '$champion_weak'";
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
+        $rweak = $stmt->fetch( PDO::FETCH_ASSOC );
 
-        $rs = $stmt->fetch( PDO::FETCH_ASSOC );
-        $outp = json_encode($rs);
+        $sql = "SELECT id, name, eng_name FROM champion_list where eng_name = '$champion_strong'";
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute();
+        $rstrong = $stmt->fetch( PDO::FETCH_ASSOC );
+
+        $outp = '{"weak":'.json_encode($rweak).',"strong":'.json_encode($rstrong).'}';
         echo($outp);
         break;
     case 'getTips':
@@ -39,8 +41,10 @@ switch($_GET['action']){
 
 function getTips(){
     global $dbh;
-    $counter_id = $_GET['param'];
-    $sql = "SELECT id, tip, date_time, author, vote FROM counter_tips where counter_id = $counter_id ORDER BY vote desc, date_time";
+    $champion_weak = $_GET['weak'];
+    $champion_strong = $_GET['strong'];
+    $sql = "SELECT id, tip, date_time, author, vote FROM counter_tips
+    WHERE champion_weak = $champion_weak AND champion_strong = $champion_strong ORDER BY vote desc, date_time";
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
     $rs = $stmt->fetchAll( PDO::FETCH_ASSOC);
@@ -70,10 +74,11 @@ function downvote(){
 function submitTip(){
     global $dbh;
 	$data = json_decode(file_get_contents("php://input"));
-	$id = $data->counter_id;
+	$champion_weak = $data->champion_weak;
+    $champion_strong = $data->champion_strong;
     $name = $data->name;
     $tip = $data->tip;
-	$sql = "INSERT INTO counter_tips (counter_id,tip,author)VALUES($id, '$tip','$name')";
+	$sql = "INSERT INTO counter_tips (champion_weak,champion_strong,tip,author)VALUES($champion_weak,$champion_strong,'$tip','$name')";
 	$stmt = $dbh->prepare($sql);
 	$stmt->execute();
     if($stmt){

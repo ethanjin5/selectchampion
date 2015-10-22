@@ -42,7 +42,7 @@ function getCounters(){
     $type_sql = " AND type ='".$_GET['type']."'";
     if ($_GET['type']=="全部"){$type_sql = "";}
     
-	$sql = "SELECT * FROM (SELECT c.id AS id, l.name AS champion_against, l.eng_name AS eng_name, upvote,downvote 
+	$sql = "SELECT * FROM (SELECT c.id AS id, champion_weak, champion_strong, l.name AS champion_against, l.eng_name AS eng_name, upvote,downvote 
     FROM counter c LEFT JOIN champion_list l ON c.champion_strong = l.id 
     WHERE champion_weak = $champ_id AND category = 'strong'".$type_sql." 
     ORDER BY (upvote-downvote) DESC LIMIT 20) x GROUP BY champion_against ORDER BY (upvote-downvote) DESC LIMIT 12";
@@ -50,7 +50,7 @@ function getCounters(){
 	$stmt->execute();
 	$rweak = $stmt->fetchAll( PDO::FETCH_ASSOC );
     
-    $sql = "SELECT * FROM (SELECT c.id AS id, l.name AS champion_against, l.eng_name AS eng_name, upvote,downvote 
+    $sql = "SELECT * FROM (SELECT c.id AS id, champion_weak, champion_strong, l.name AS champion_against, l.eng_name AS eng_name, upvote,downvote 
     FROM counter c LEFT JOIN champion_list l ON c.champion_weak = l.id 
     WHERE champion_strong = $champ_id AND category = 'strong'".$type_sql." 
     ORDER BY (upvote-downvote) DESC LIMIT 20) x GROUP BY champion_against ORDER BY (upvote-downvote) DESC LIMIT 12";
@@ -85,8 +85,10 @@ function downvote(){
 
 function getTips(){
     global $dbh;
-    $counter_id = $_GET['counter_id'];
-    $sql = "SELECT id, tip, date_time, author, vote FROM counter_tips where counter_id = $counter_id ORDER BY vote LIMIT 5";
+    $champion_weak = $_GET['weak'];
+    $champion_strong = $_GET['strong'];
+    $sql = "SELECT id, tip, date_time, author, vote FROM counter_tips 
+    WHERE champion_weak = $champion_weak AND champion_strong = $champion_strong ORDER BY vote LIMIT 5";
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
     $rs = $stmt->fetchAll( PDO::FETCH_ASSOC);

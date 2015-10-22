@@ -3,7 +3,7 @@
 angular.module('tips',['ngRoute'])
 .config(function($routeProvider, $locationProvider) {
   $routeProvider
-  .when('/champion/:name/tips/:type/:counter_id', {
+  .when('/champion/tips/:type/:champion_weak/:champion_strong', {
     templateUrl: 'app/components/tips/tips.html',
     controller: 'TipsCtrl',
       title: 'Tips'
@@ -17,22 +17,24 @@ angular.module('tips',['ngRoute'])
     });
 }])
 .controller('TipsCtrl', function ($scope, $routeParams, $http) {
-    $scope.champion_name = $routeParams.name;
     if ($routeParams.type =='weak'){
         $scope.type = true;
     }
     else{$scope.type=false;}
-    $scope.counter_id = $routeParams.counter_id;
     getInfo();
     
     function getInfo(){
-        $http.get("app/components/tips/tips_mysql.php?action=getInfo&param="+$routeParams.counter_id)
+        $http.get("app/components/tips/tips_mysql.php?action=getInfo&weak="+$routeParams.champion_weak+"&strong="+$routeParams.champion_strong)
             .success(function(response) {
                 $scope.counter = response;
+                $scope.getTips($scope.type,response.weak.id,response.strong.id);
             });
     }
-    $scope.getTips = function(){
-        $http.get("app/components/tips/tips_mysql.php?action=getTips&param="+$routeParams.counter_id)
+    $scope.getTips = function(type,champion_one,champion_two){
+        if (type){var champion_weak = champion_one; var champion_strong = champion_two;}else{
+            var champion_weak = champion_two; var champion_strong = champion_one;
+        }
+        $http.get("app/components/tips/tips_mysql.php?action=getTips&weak="+champion_weak+"&strong="+champion_strong)
             .success(function(response) {
                 $scope.tips = response;
                 if(!response.length){
@@ -40,48 +42,53 @@ angular.module('tips',['ngRoute'])
                 }
             });
     }
-    $scope.submitTip = function(counter_id){
+    $scope.submitTip = function(type,champion_one,champion_two){
+        if (type){var champion_weak = champion_one; var champion_strong = champion_two;}else{
+            var champion_weak = champion_two; var champion_strong = champion_one;
+        }
         $http.post('app/components/tips/tips_mysql.php?action=submitTips',
             {
-                'counter_id'    : counter_id,
-                'name'          : $scope.tip.name,
-                'tip'           : $scope.tip.tip
+                'champion_weak'     : champion_weak,
+                'champion_strong'   : champion_strong,
+                'name'              : $scope.tip.name,
+                'tip'               : $scope.tip.tip
             }
         )
         .success(function(response){
             var defaultForm = {
-                counter_id  : "",
-                name        : "",
-                email       : "",
-                tip         : ""
+                champion_weak   : "",
+                champion_strong : "",
+                name            : "",
+                email           : "",
+                tip             : ""
             }
             $scope.add_tip.$setPristine();
             $scope.tip = defaultForm;
-            $scope.getTips(counter_id);
+            $scope.getTips($scope.type,$scope.counter.weak.id,$scope.counter.strong.id);
         });
     }
 
 
     //update upvote
-    $scope.upvote = function(tip_id,counter_id) {
+    $scope.upvote = function(tip_id) {
         $http.post('app/components/tips/tips_mysql.php?action=upvote', 
             {
                 'tip_id'    : tip_id
             }
         )
         .success(function (response) {
-            $scope.getTips(counter_id);
+            $scope.getTips($scope.type,$scope.counter.weak.id,$scope.counter.strong.id);
         });
     }
 
-    $scope.downvote = function(tip_id,counter_id) {
+    $scope.downvote = function(tip_id) {
         $http.post('app/components/tips/tips_mysql.php?action=downvote', 
             {
                 'tip_id'    : tip_id
             }
         )
         .success(function (response) {
-            $scope.getTips(counter_id);
+            $scope.getTips($scope.type,$scope.counter.weak.id,$scope.counter.strong.id);
         });
     }
     
