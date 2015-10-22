@@ -82,7 +82,12 @@ function submitTip(){
 	$stmt = $dbh->prepare($sql);
 	$stmt->execute();
     if($stmt){
-        return true;
+        $sql = "UPDATE counter set num_tips = num_tips+1 WHERE champion_weak = $champion_weak AND champion_strong = $champion_strong";
+        $stmt_num = $dbh->prepare($sql);
+        $stmt_num->execute();
+        if($stmt_num){
+            return true;
+        }else{return false;}
     }
     else{return false;}
 }

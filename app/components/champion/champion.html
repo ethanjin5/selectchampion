@@ -113,7 +113,7 @@
                                                 </button></td>
                                                 <td><a href="/champion/tips/{{::key}}/{{::champion.eng_name}}/{{::counter.eng_name}}"><button ng-mouseenter="getTips(counter.champion_weak, counter.champion_strong)" uib-popover-template="TipPopover.templateUrl" popover-placement="left"
                                                             popover-title="Tips:" type="button" popover-trigger="mouseenter"
-                                                            class="btn btn-black vote-btn" ng-cloak>Tips</button></a>
+                                                            class="btn btn-black vote-btn" ng-cloak>{{counter.num_tips}} Tips</button></a>
 
                                                         <script type="text/ng-template" id="PopoverTipTemplate.html">
                                                             <div ng-repeat="tip in tips">{{tip.tip}}</div>
