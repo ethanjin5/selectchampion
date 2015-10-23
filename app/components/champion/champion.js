@@ -11,11 +11,7 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
   .otherwise("/404", {templateUrl: "app/components/home/views/404.html", controller: "PageCtrl"});
   $locationProvider.html5Mode(true);
 })
-.run(['$location', '$rootScope', function($location, $rootScope) {
-    $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
-        $rootScope.title = current.$$route.title;
-    });
-}])
+
 .controller('ChampionCtrl', function ($scope, $routeParams, $http, $timeout) {
     $scope.champion_name = $routeParams.name;
     getInfo();

@@ -1,5 +1,4 @@
 <div id="about-page">
-
     <!-- header begin -->
     <header class="page-head">
         <div class="header-wrapper">
@@ -93,28 +92,35 @@
         <section class="bg-white story champion-counter">
             <div class="container">
                 <div class="row">
-                    <uib-tabset justified="true"> <!--TODO: justified or not? width setted to 480-->
-                        <!--TODO: ng-init not working-->
+                    <uib-tabset justified="true"> <!--TODO: justified or not? -->
                             <uib-tab heading="{{::type}}" ng-repeat="type in ::['全部','综合','上单','中单','下路','打野']" 
                                  ng-click ="::getCounters(champion.id,type)">
-                                    <div class="champion-against col-md-6" ng-repeat="(key,counter_data) in counters"><!--TODO:col-md-6 making tab not extending in height-->
+                                    <div class="champion-against col-md-6" ng-repeat="(key,counter_data) in counters">
                                         <table>
                                             <thead>{{::champion.name}} is {{::key}} against:</thead>
                                             <tr ng-repeat="counter in counter_data">
                                                 <td><a href="/champion/{{::counter.eng_name}}">
-                                                    <img ng-src="assets/img/champ_img/{{::counter.eng_name}}.png" 
-                                                         class="counter-thumbnail" alt="{{::champion.name}}"></a></td>
-                                                <td class="counter-name"><a href="/champion/{{::counter.eng_name}}">{{::counter.champion_against}}</a></td>
+                                                        <img ng-src="assets/img/champ_img/{{::counter.eng_name}}.png" 
+                                                        class="counter-thumbnail" alt="{{::champion.name}}">
+                                                    </a>
+                                                </td>
+                                                <td class="counter-name">
+                                                    <a href="/champion/{{::counter.eng_name}}">{{::counter.champion_against}}</a>
+                                                </td>
                                                 <td><button class="btn btn-default vote-btn" ng-click="upvote(counter.id,champion.id,type)">
                                                     <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>{{::counter.upvote}}
                                                 </button></td>
                                                 <td><button class="btn btn-default vote-btn" ng-click="downvote(counter.id,champion.id,type)">
                                                     <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>{{::counter.downvote}}
                                                 </button></td>
-                                                <td><a href="/champion/tips/{{::key}}/{{::champion.eng_name}}/{{::counter.eng_name}}"><button ng-mouseenter="getTips(counter.champion_weak, counter.champion_strong)" uib-popover-template="TipPopover.templateUrl" popover-placement="left"
-                                                            popover-title="Tips:" type="button" popover-trigger="mouseenter"
-                                                            class="btn btn-black vote-btn">{{counter.num_tips}} Tips</button></a>
-
+                                                <td>
+                                                    <a href="/champion/tips/{{::key=='weak'? champion.eng_name:counter.eng_name}}/{{::key=='weak'? counter.eng_name:champion.eng_name}}">
+                                                        <button ng-mouseenter="getTips(counter.champion_weak, counter.champion_strong)" 
+                                                                uib-popover-template="TipPopover.templateUrl" popover-placement="left" 
+                                                                popover-title="Tips:" type="button" popover-trigger="mouseenter" 
+                                                                class="btn btn-black vote-btn">{{counter.num_tips}} Tips
+                                                        </button>
+                                                    </a>
                                                         <script type="text/ng-template" id="PopoverTipTemplate.html">
                                                             <div ng-repeat="tip in tips">{{tip.tip}}</div>
                                                         </script>

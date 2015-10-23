@@ -33,9 +33,6 @@ app.run(['$location', '$rootScope', function($location, $rootScope) {
     });
 }])
 app.controller('HomeCtrl', function ($scope, $http) {
-    $scope.$on('$routeChangeSuccess', function (event, data) {
-        $scope.pageTitle = data.title;
-    });
     $http.get("app/core/champion_list_mysql.php")
         .success(function(response) {$scope.champions = response;
     });
