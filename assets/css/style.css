@@ -793,7 +793,12 @@ section {
 /*---------------------------  portfolio  ----------------------------------*/
 
 .champion-item {
-	margin-bottom: 3.1269em;
+	margin-bottom: 2.5 em;
+}
+.home-btn{
+    display: block;
+    margin: 0 auto;
+    clear:both;
 }
 
 .champion-item .item-image {

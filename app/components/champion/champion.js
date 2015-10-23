@@ -18,7 +18,12 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
     $timeout(function(){
         $scope.getCounters($scope.champ_id,'全部');
     },500);
-    
+    //the controller
+    $scope.totalDisplayed = 5;
+
+    $scope.loadMore = function () {
+      $scope.totalDisplayed += 5;  
+    };
     function getInfo(){
         $http.get("app/components/champion/champion_mysql.php?action=getInfo&param="+$routeParams.name)
             .success(function(response) {

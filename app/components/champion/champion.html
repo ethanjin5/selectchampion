@@ -98,7 +98,7 @@
                                     <div class="champion-against col-md-6" ng-repeat="(key,counter_data) in counters">
                                         <table>
                                             <thead>{{::champion.name}} is {{::key}} against:</thead>
-                                            <tr ng-repeat="counter in counter_data">
+                                            <tr ng-repeat="counter in counter_data | limitTo:totalDisplayed">
                                                 <td><a href="/champion/{{::counter.eng_name}}">
                                                         <img ng-src="assets/img/champ_img/{{::counter.eng_name}}.png" 
                                                         class="counter-thumbnail" alt="{{::champion.name}}">
@@ -126,6 +126,7 @@
                                                         </script>
                                                 </td>
                                             </tr>
+                                            <tr><td colspan="3" style="display:block"><button class="btn btn-default home-btn" ng-click="loadMore()">显示更多</button></td></tr>
                                         </table>        
                                     </div>
                             </uib-tab>

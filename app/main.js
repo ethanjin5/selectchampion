@@ -36,12 +36,18 @@ app.controller('HomeCtrl', function ($scope, $http) {
     $http.get("app/core/champion_list_mysql.php")
         .success(function(response) {$scope.champions = response;
     });
+    
+    //pagination
+    $scope.totalDisplayed = 24;
+    $scope.displayMore = function () {
+      $scope.totalDisplayed = 150; //increment needed if there are more than 150 champions  
+    };
     $scope.loadMore = function() {
-        var last = $scope.images[$scope.champions.length - 1];
+        var last = $scope.champions[$scope.champions.length - 1];
         for(var i = 1; i <= 8; i++) {
           $scope.champions.push(last + i);
         }
-    };
+      };
 
 });
 

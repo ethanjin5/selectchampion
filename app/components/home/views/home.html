@@ -23,7 +23,7 @@
                 <div class="champion-item-list" infinite-scroll="loadMore()" infinite-scroll-distance="8">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="champion in champions | filter: searchKeyword">
+                        <div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="champion in champions | filter: searchKeyword | limitTo:totalDisplayed">
                             <div class="champion-item">
                                 <div class="item-image">
                                     <a href="/champion/{{::champion.eng_name}}">
@@ -40,9 +40,9 @@
                                 </div> <!-- end of /.item-description -->
                             </div> <!-- end of /.portfolio-item -->
                         </div>
-
-
+                        <button ng-show="!searchKeyword" class="btn btn-default home-btn" ng-click="displayMore()">Load more</button>
                     </div>
+                    
                 </div> <!-- end of portfolio-item-list -->
                     
             </div>
