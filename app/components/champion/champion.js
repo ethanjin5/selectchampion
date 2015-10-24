@@ -36,6 +36,7 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
         $http.get('app/components/champion/champion_mysql.php?action=getCounters&id='+id+'&type='+type)
         .success(function (response) {
             $scope.counters = response;
+            $scope.totalDisplayed = 5; // reset displayed counters on page
         });
     }
     
