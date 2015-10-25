@@ -105,7 +105,7 @@
                                  ng-click ="::getCounters(champion.id,type.type)">
                                     <div class="champion-against col-md-6" ng-repeat="(key,counter_data) in counters">
                                         <table>
-                                            <thead>{{::champion.name}} is {{::key}} against:</thead>
+                                            <thead>{{::champion.name}} 的 {{key=="weak"?"爸爸":"儿子"}} 们:</thead>
                                             <tr ng-repeat="counter in counter_data | limitTo:totalDisplayed">
                                                 <td><a href="/champion/{{::counter.eng_name}}">
                                                         <img ng-src="assets/img/champ_img/{{::counter.eng_name}}.png" 
