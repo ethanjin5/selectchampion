@@ -22,6 +22,15 @@ switch($_GET['action']){
         $outp = '{"champion":'.json_encode($rs).',"type":'.json_encode($rs_type).'}';
         echo($outp);
         break;
+    case 'getGeneralTips':
+        $champ_id = $_GET['param'];
+        $sql = "SELECT tip, date_time, author, vote FROM general_tips WHERE champion_id = $champ_id";
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute();
+        $rs = $stmt->fetchAll( PDO::FETCH_ASSOC );
+        $outp = json_encode($rs);
+        echo $outp;
+        break;
     case 'getCounters':
         $outp = getCounters();
         echo $outp;

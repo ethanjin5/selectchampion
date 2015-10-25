@@ -846,6 +846,8 @@ section {
     margin-bottom: 2px;
     font-size: 13px;
     color: #474747;
+    max-height: 18px;
+    overflow: hidden;
 }
 
 .champion-item .item-description span.like {
@@ -1136,11 +1138,11 @@ section {
     
 }
 .hoverTips{
-    padding: 5px 10px;
+    padding: 10px 0px;
     border-bottom: 1px solid #eee;
 }
 .hoverSubmitTip{
-    padding: 5px 10px;
+    padding: 10px 0px;
     text-align: right;
     color: darkviolet;
 }
@@ -2022,5 +2024,8 @@ Site's Personal style
     }
     .champion-against .counter-name{
         padding-left:0px;
+    }
+    .popover-content{
+        width: 200px;
     }
 }

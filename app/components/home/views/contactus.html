@@ -43,24 +43,24 @@
                     </div>
                 </div> <!-- /.contact-speech -->
 
-                <form method="post" action="contactus.php">
+                <form name="contact_us" ng-submit = "submitFeedback()">
 
                     <div class="row">
                         <div class="col-md-4">
 
                             <div class="form-group">
-                                <input  name="name" type="text" class="form-control" id="name" required="required" placeholder="姓名">
+                                <input  name="name" ng-model="feedback.name" type="text" class="form-control" id="name" required="required" placeholder="姓名">
                             </div>
 
                             <div class="form-group">
-                                <input name="email" type="email" class="form-control" id="email" required="required" placeholder="邮件地址">
+                                <input name="email" ng-model="feedback.email" type="email" class="form-control" id="email" placeholder="邮件地址">
                             </div>
 
                         </div>
 
                         <div class="col-md-8">
-                            <textarea name="message" type="text" class="form-control" id="message" rows="5" required="required" placeholder="请输入信息..."></textarea>
-                            <button type="submit" id="submit" name="submit" class="btn btn-black">send message</button>
+                            <textarea name="message" ng-model="feedback.message" type="text" class="form-control" id="message" rows="5" required="required" placeholder="请输入信息..."></textarea>
+                            <button type="submit" id="submit" name="submit" class="btn btn-black">提交</button>
                         </div>
                         
                     </div>

@@ -29,12 +29,22 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
             .success(function(response) {
                 $scope.champion = response.champion;
                 $scope.champ_id = response.champion.id;
+                $scope.getGeneralTips(response.champion.id);
                 response.type.unshift({type:'全部'});
                 $scope.types = response.type;
                 
             });
     }
-
+    
+    $scope.getGeneralTips = function(champ_id){
+        $http.get("app/components/champion/champion_mysql.php?action=getGeneralTips&param="+champ_id)
+            .success(function(response) {
+                $scope.generalTips = response;
+                if(!response.length){
+                    $scope.generalTips = [{"tip":"暂无技巧"}];
+                }
+            });
+    }
     $scope.getCounters = function(id,type){
         $http.get('app/components/champion/champion_mysql.php?action=getCounters&id='+id+'&type='+type)
         .success(function (response) {

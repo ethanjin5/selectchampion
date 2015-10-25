@@ -9,7 +9,7 @@ app.config(function ($routeProvider, $locationProvider) {
 		//Champion Detail
 		.when("/champion", {templateUrl: "app/components/home/views/home.html", controller: "HomeCtrl", title:"英雄列表"})
 		// Pages
-		.when("/contact", {templateUrl: "app/components/home/views/contactus.html", controller: "PageCtrl", title:"关于我们"})
+		.when("/contact", {templateUrl: "app/components/home/views/contactus.html", controller: "ContactCtrl", title:"关于我们"})
 		.when("/faq", {templateUrl: "app/components/home/views/faq.html", controller: "PageCtrl"})
 		/* etc… routes to other pages… */
 		// Blog
@@ -49,6 +49,30 @@ app.controller('HomeCtrl', function ($scope, $http) {
         }
       };
 
+});
+
+/**
+* Controls the ContactUs
+*/
+app.controller('ContactCtrl', function ($scope,$http) {
+    $scope.submitFeedback = function(){
+        $http.post('app/core/contactus.php',
+            {
+                'name'              : $scope.feedback.name,
+                'email'             : $scope.feedback.email,
+                'feedback'          : $scope.feedback.message
+            })
+        .success(function(response){
+            var defaultForm = {
+                name            : "",
+                email           : "",
+                message         : ""
+            }
+            $scope.contact_us.$setPristine();
+            $scope.feedback = defaultForm;
+            console.log(response);
+        });
+    }
 });
 
 /**

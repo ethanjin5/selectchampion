@@ -34,6 +34,10 @@
                                 <h4 class="detail-title">{{::champion.tags}}</h4>
                             </div>
                         </div>
+                        <div class="col-md-12">
+                            <h4>通用对战技巧：</h4>
+                            <p ng-repeat = "tip in generalTips">{{tip.vote}}{{tip.tip}} - {{tip.author}}</p>
+                        </div>
                     </div>
                 </div> <!-- /.headline -->
 
@@ -121,8 +125,8 @@
                                                     <a href="/champion/tips/{{::key=='weak'? champion.eng_name:counter.eng_name}}/{{::key=='weak'? counter.eng_name:champion.eng_name}}">
                                                         <button ng-mouseenter="getTips(counter.champion_weak, counter.champion_strong)" 
                                                                 uib-popover-template="TipPopover.templateUrl" popover-placement="left" 
-                                                                popover-title="{{champion.name}} vs {{counter.champion_against}} 的技巧:" type="button" popover-trigger="mouseenter" 
-                                                                class="btn btn-black vote-btn">{{counter.num_tips}} 技巧
+                                                                popover-title="{{champion.name}} vs {{counter.champion_against}} 的技巧:" type="button" 
+                                                                popover-trigger="mouseenter" class="btn btn-black vote-btn">{{counter.num_tips}} 技巧
                                                         </button>
                                                     </a>
                                                         <script type="text/ng-template" id="PopoverTipTemplate.html">
