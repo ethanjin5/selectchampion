@@ -503,14 +503,15 @@ li {
 .section-title {
 	margin-bottom: 5px;
 	text-transform: uppercase;
-	text-align: center;
+
 }
 
 .section-sub-title {
 	color: #969595;
-	margin-bottom: 0px;
+	margin-bottom: 10px;
 	text-transform: capitalize;
 	word-spacing: 1px;
+    font-size: 18px;
 }
 
 /* =-=--=-=-=-=-=-==-=-=-=- 2.8  Footer   =-=-=-=-==-=-==-====-==-=- */
@@ -1121,7 +1122,28 @@ section {
     max-height: 200px;
     overflow-y: scroll;
 }
-
+.champion_detail h2{
+    font-weight: 400;
+}
+.detail-img{
+    float:left;
+    margin-right: 20px;
+}
+.detail-title{
+    margin-top:0;
+    margin-bottom: 15px;
+    padding: 0;
+    
+}
+.hoverTips{
+    padding: 5px 10px;
+    border-bottom: 1px solid #eee;
+}
+.hoverSubmitTip{
+    padding: 5px 10px;
+    text-align: right;
+    color: darkviolet;
+}
 /*----------------------------------------- 4.3 skill  ------------------------------------*/
 
 .skill {
@@ -1922,11 +1944,20 @@ Site's Personal style
 	display: inline-block;
 	padding-top: 10px;
 }
-
+.champion-tip{
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
 .counter-thumbnail{
     width:50px;
 }
 
+.counter-info-div{
+    margin-bottom:30px;
+}
+.champion-tips{
+    margin-bottom:30px;
+}
 .champion-against tr{
     margin-top:10px;
     margin-bottom:10px;
@@ -1942,11 +1973,11 @@ Site's Personal style
 .champion-against .vote-btn{
     width:90px;
 }
-.champion-tips .grey{
+.champion-tip .grey{
     color:darkgrey;
 }
 
-.champion-tips{
+.champion-tip{
     overflow: hidden;
     margin-bottom: 10px;
     

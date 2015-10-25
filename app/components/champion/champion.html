@@ -7,7 +7,7 @@
                     <div class="col-md-12">
 
                         <ol class="breadcrumb">
-                            <li><a href="/">全部英雄</a></li>
+                            <li><a href="/">英雄列表</a></li>
                             <li class="active">{{::champion.name}}</li>
                         </ol> <!-- end of /.breadcrumb -->
 
@@ -22,20 +22,24 @@
         <!-- begin our story section -->
         <section class="bg-white story">
             <div class="container">
-                <div class="headline text-center">
+                
+                <div class="headline">
                     <div class="row">
-                        <div class="col-md-6 col-md-offset-3">
-                            <img ng-src="assets/img/champ_img/{{::champion.eng_name}}.png" class="img-responsive center-block" alt="{{::champion.name}}">
-                            <h3 class="section-title">{{::champion.alias}}</h3>
-                            <h2 class="section-title">{{::champion.name}}</h2>
-                            <h4 class="section-title">{{::champion.tags}}</h4>
+                        <a class="text-center" href="/contact#contact"><uib-alert>若您有任何问题或建议，请点击此处联系我们！</uib-alert></a>
+                        <div class="col-md-6">
+                            <div class="champion_detail">
+                                <img class="detail-img" ng-src="assets/img/champ_img/{{::champion.eng_name}}.png" alt="{{::champion.name}}">
+                                <h2 class="detail-title">{{::champion.name}}</h2>
+                                <h3 class="detail-title">{{::champion.alias}}</h3>
+                                <h4 class="detail-title">{{::champion.tags}}</h4>
+                            </div>
                         </div>
                     </div>
                 </div> <!-- /.headline -->
 
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 text-center">
-                        <p class="story-description">kong wei, sui yi shi yong</p>
+                        <p class="story-description"></p>
                         <!-- /.story-description -->
                     </div>
                 </div>
@@ -44,7 +48,7 @@
         <!-- end of our story section -->
 
          <!-- begin skill section -->
-
+<!--
         <section class="bg-light-gray skill">
             <div class="container">
                 <div class="row">
@@ -82,19 +86,19 @@
                                     85%
                                  </div>
                             </div>
-                        </div> <!-- /.skill-level -->
+                        </div> 
                     </div>
                 </div>
             </div>
         </section>
-
+-->
         <!-- begin counter section -->
         <section class="bg-white story champion-counter">
             <div class="container">
                 <div class="row">
                     <uib-tabset justified="true"> <!--TODO: justified or not? -->
-                            <uib-tab heading="{{::type}}" ng-repeat="type in ::['全部','综合','上单','中单','下路','打野']" 
-                                 ng-click ="::getCounters(champion.id,type)">
+                            <uib-tab heading="{{::type.type}}" ng-repeat="type in types" 
+                                 ng-click ="::getCounters(champion.id,type.type)">
                                     <div class="champion-against col-md-6" ng-repeat="(key,counter_data) in counters">
                                         <table>
                                             <thead>{{::champion.name}} is {{::key}} against:</thead>
@@ -107,22 +111,23 @@
                                                 <td class="counter-name">
                                                     <a href="/champion/{{::counter.eng_name}}">{{::counter.champion_against}}</a>
                                                 </td>
-                                                <td><button class="btn btn-default vote-btn" ng-click="upvote(counter.id,champion.id,type)">
+                                                <td><button class="btn btn-default vote-btn" ng-click="upvote(counter.id,champion.id,type.type)">
                                                     <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>{{::counter.upvote}}
                                                 </button></td>
-                                                <td><button class="btn btn-default vote-btn" ng-click="downvote(counter.id,champion.id,type)">
+                                                <td><button class="btn btn-default vote-btn" ng-click="downvote(counter.id,champion.id,type.type)">
                                                     <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>{{::counter.downvote}}
                                                 </button></td>
                                                 <td>
                                                     <a href="/champion/tips/{{::key=='weak'? champion.eng_name:counter.eng_name}}/{{::key=='weak'? counter.eng_name:champion.eng_name}}">
                                                         <button ng-mouseenter="getTips(counter.champion_weak, counter.champion_strong)" 
                                                                 uib-popover-template="TipPopover.templateUrl" popover-placement="left" 
-                                                                popover-title="Tips:" type="button" popover-trigger="mouseenter" 
-                                                                class="btn btn-black vote-btn">{{counter.num_tips}} Tips
+                                                                popover-title="{{champion.name}} vs {{counter.champion_against}} 的技巧:" type="button" popover-trigger="mouseenter" 
+                                                                class="btn btn-black vote-btn">{{counter.num_tips}} 技巧
                                                         </button>
                                                     </a>
                                                         <script type="text/ng-template" id="PopoverTipTemplate.html">
-                                                            <div ng-repeat="tip in tips">{{tip.tip}}</div>
+                                                            <div class="hoverTips" ng-repeat="tip in tips">{{tip.tip}}</div>
+                                                            <div class="hoverSubmitTip">点击提交新的技巧！</div>
                                                         </script>
                                                 </td>
                                             </tr>

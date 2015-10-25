@@ -9,19 +9,20 @@
 
                 <div class="headline">
                     <div class="row">
+                        <a class="text-center" href="/contact#contact"><uib-alert>若您有任何问题或建议，请点击此处联系我们！</uib-alert></a>
                         <div class="col-md-6">
-                            <h2 class="section-title">英雄</h2>
-                            <p class="section-sub-title">
-                                点击英雄查看他所克制及被克的英雄和出装
-                            </p> <!-- /.section-sub-title -->
-                            <input ng-model="searchKeyword" name="name" type="text" class="form-control" id="name" required="required" placeholder="输入英雄名">
+                            <h2 class="section-title">英雄列表</h2>
+                            <h4 class="section-sub-title">
+                                点击英雄查看其克制及被克制的英雄和对战技巧
+                            </h4> <!-- /.section-sub-title -->
+                            <input ng-model="searchKeyword" name="name" type="text" class="form-control" id="name" required="required" placeholder="搜索英雄： 输入英雄名或别名（例如 火男，乌鸦 等）">
                         </div>
                     </div>
                 </div> <!-- /.headline -->
 
 
-                <div class="champion-item-list" infinite-scroll="loadMore()" infinite-scroll-distance="8">
-                    <div class="row">
+                <div class="champion-item-list">
+                    <div class="row"><!--TODO: returning error - infinite-scroll="loadMore()" infinite-scroll-distance="8" -->
 
                         <div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="champion in champions | filter: searchKeyword | limitTo:totalDisplayed">
                             <div class="champion-item">
@@ -34,7 +35,7 @@
 
                                 <div class="item-description">
                                     <div>
-                                            <span class="item-name">{{::champion.eng_name}} - {{champion.id}}</span>
+                                            <span class="item-name">{{::champion.alias}}</span>
 
                                     </div>
                                 </div> <!-- end of /.item-description -->

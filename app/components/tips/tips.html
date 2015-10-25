@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <ol class="breadcrumb">
-                            <li><a href="/">全部英雄</a></li>
+                            <li><a href="/">英雄列表</a></li>
                             <li><a href="/champion/{{counter.weak.eng_name}}">
                                 {{counter.weak.name}}</a></li>
                             <li class="active">Tips</li>
@@ -25,17 +25,19 @@
         <!-- begin our story section -->
         <section class="bg-white story">
             <div class="container">
+                <a class="text-center" href="/contact#contact"><uib-alert>若您有任何问题或建议，请点击此处联系我们！</uib-alert></a>
+
                 <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="counter-info-div">
-                            <a href="/champion/{{::counter.weak.eng_name}}">
+                    <div class="champion-tips col-md-10 col-md-offset-1">
+                        <div class="counter-info-div text-center">
+                            <a class="champion_tip_thumb" href="/champion/{{::counter.weak.eng_name}}">
                                 <img ng-src="assets/img/champ_img/{{::counter.weak.eng_name}}.png" class="counter-thumbnail" 
-                                 alt="{{::counter.weak.name}}">{{::counter.weak.name}}</a> VS 
-                            <a href="/champion/{{::counter.strong.eng_name}}">
+                                 alt="{{::counter.weak.name}}"> {{::counter.weak.name}}</a> VS 
+                            <a class="champion_tip_thumb" href="/champion/{{::counter.strong.eng_name}}">
                                 <img ng-src="assets/img/champ_img/{{::counter.strong.eng_name}}.png" class="counter-thumbnail" 
-                                 alt="{{::counter.strong.name}}">{{::counter.strong.name}}</a>
+                                 alt="{{::counter.strong.name}}"> {{::counter.strong.name}}</a>
                         </div>
-                        <div class="champion-tips" ng-repeat ="tip in tips">
+                        <div class="champion-tip" ng-repeat ="tip in tips">
                             <div class="tip-vote-div col-md-2">
                                 <div class="tip-vote-num col-md-6">{{::tip.vote}}</div>
                                 <div class="tip-vote-icon col-md-6">
@@ -54,29 +56,31 @@
                             </div>
                         </div>
                     </div>
-                    <div class="submit-form">
-                        <form name='add_tip' ng-submit = "submitTip(counter.weak.id,counter.strong.id)">
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-2">
-                                    <div class="form-group col-md-6 col-sm-12">
-                                        <input  name="name" ng-model="tip.name" type="text" class="form-control" id="name" required="required" placeholder="Full Name">
-                                    </div>
 
-                                    <div class="form-group col-md-6 col-sm-12">
-                                        <input name="email" ng-model="tip.email" type="email" class="form-control" id="email" placeholder="Email Address">
-                                    </div>
+                    <form name='add_tip' ng-submit = "submitTip(counter.weak.id,counter.strong.id)" class="contact-form">
 
+                        <div class="row col-md-10 col-md-offset-1">
+                            <div class="col-md-4">
+
+                                <div class="form-group">
+                                    <input  name="name" ng-model="tip.name" type="text" class="form-control" id="name" required="required" placeholder="姓名">
                                 </div>
 
-                                <div class="col-md-8 col-md-offset-2">
-                                    <textarea name="tip" ng-model="tip.tip" type="text" class="form-control" id="tip" rows="5" required="required" placeholder="Type here message"></textarea>
-                                    <button type="submit" id="submit" name="submit" class="btn btn-black">submit tip</button>
+                                <div class="form-group">
+                                    <input name="email" ng-model="tip.email" type="email" class="form-control" id="email" placeholder="邮件地址">
                                 </div>
+
                             </div>
 
-                        </form> <!-- form end -->
-                    </div>
-                </div>
+                            <div class=" col-md-8">
+                                <textarea name="tip" ng-model="tip.tip" type="text" class="form-control" id="tip" rows="5" required="required" placeholder="请输入技巧"></textarea>
+                                <button type="submit" id="submit" name="submit" class="btn btn-black">提交技巧</button>
+                            </div>
+                        </div>
+
+
+                    </form> <!-- form end -->
+                    
             </div>
         </section>
         </div>

@@ -27,8 +27,11 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
     function getInfo(){
         $http.get("app/components/champion/champion_mysql.php?action=getInfo&param="+$routeParams.name)
             .success(function(response) {
-                $scope.champion = response;
-                $scope.champ_id = response.id;
+                $scope.champion = response.champion;
+                $scope.champ_id = response.champion.id;
+                response.type.unshift({type:'全部'});
+                $scope.types = response.type;
+                
             });
     }
 
@@ -69,7 +72,7 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
         .success(function (response) {
             $scope.tips = response;
             if(!response.length){
-                $scope.tips = [{"tip":"no tips yet, be the first to submit a tip!"}];
+                $scope.tips = [{"tip":"暂无技巧"}];
             }
         });
     }

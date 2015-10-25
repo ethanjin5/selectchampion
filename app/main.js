@@ -5,11 +5,11 @@ var app = angular.module('ChampionCounter', ['ngRoute','infinite-scroll','champi
 app.config(function ($routeProvider, $locationProvider) {
 	$routeProvider
 		// Home
-		.when("/", {templateUrl: "app/components/home/views/home.html", controller: "HomeCtrl", title:"全部英雄"})
+		.when("/", {templateUrl: "app/components/home/views/home.html", controller: "HomeCtrl", title:"英雄列表"})
 		//Champion Detail
-		.when("/champion", {templateUrl: "app/components/home/views/home.html", controller: "HomeCtrl", title:"全部英雄"})
+		.when("/champion", {templateUrl: "app/components/home/views/home.html", controller: "HomeCtrl", title:"英雄列表"})
 		// Pages
-		.when("/contact", {templateUrl: "app/components/home/views/contactus.html", controller: "PageCtrl", title:"联系我们"})
+		.when("/contact", {templateUrl: "app/components/home/views/contactus.html", controller: "PageCtrl", title:"关于我们"})
 		.when("/faq", {templateUrl: "app/components/home/views/faq.html", controller: "PageCtrl"})
 		/* etc… routes to other pages… */
 		// Blog
@@ -40,7 +40,7 @@ app.controller('HomeCtrl', function ($scope, $http) {
     //pagination
     $scope.totalDisplayed = 24;
     $scope.displayMore = function () {
-      $scope.totalDisplayed = 150; //increment needed if there are more than 150 champions  
+      $scope.totalDisplayed = 127; //increment needed if there are more than 150 champions  
     };
     $scope.loadMore = function() {
         var last = $scope.champions[$scope.champions.length - 1];

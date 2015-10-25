@@ -13,9 +13,13 @@ switch($_GET['action']){
         $sql = "SELECT id, name, eng_name, alias, description, tags FROM champion_list where eng_name = '$champ_name'";
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
-
         $rs = $stmt->fetch( PDO::FETCH_ASSOC );
-        $outp = json_encode($rs);
+        $id = $rs['id'];
+        $sql_type = "SELECT type FROM counter where champion_weak = $id OR champion_strong = $id GROUP BY type order by field(type, '综合', '上单', '中单','下路','打野')";
+        $stmt_type = $dbh->prepare($sql_type);
+        $stmt_type->execute();
+        $rs_type = $stmt_type->fetchAll( PDO::FETCH_ASSOC );
+        $outp = '{"champion":'.json_encode($rs).',"type":'.json_encode($rs_type).'}';
         echo($outp);
         break;
     case 'getCounters':
@@ -45,7 +49,7 @@ function getCounters(){
 	$sql = "SELECT * FROM (SELECT c.id AS id, champion_weak, champion_strong, l.name AS champion_against, l.eng_name AS eng_name,
     upvote,downvote,num_tips FROM counter c LEFT JOIN champion_list l ON c.champion_strong = l.id 
     WHERE champion_weak = $champ_id AND category = 'strong'".$type_sql." 
-    ORDER BY (upvote-downvote) DESC LIMIT 20) x GROUP BY champion_against ORDER BY (upvote-downvote) DESC LIMIT 12";
+    ORDER BY (upvote-downvote) DESC LIMIT 20) x GROUP BY champion_against ORDER BY (upvote-downvote) DESC";
 	$stmt = $dbh->prepare($sql);
 	$stmt->execute();
 	$rweak = $stmt->fetchAll( PDO::FETCH_ASSOC );
@@ -53,7 +57,7 @@ function getCounters(){
     $sql = "SELECT * FROM (SELECT c.id AS id, champion_weak, champion_strong, l.name AS champion_against, l.eng_name AS eng_name,
     upvote,downvote, num_tips FROM counter c LEFT JOIN champion_list l ON c.champion_weak = l.id 
     WHERE champion_strong = $champ_id AND category = 'strong'".$type_sql." 
-    ORDER BY (upvote-downvote) DESC LIMIT 20) x GROUP BY champion_against ORDER BY (upvote-downvote) DESC LIMIT 12";
+    ORDER BY (upvote-downvote) DESC LIMIT 20) x GROUP BY champion_against ORDER BY (upvote-downvote) DESC";
 	$stmt = $dbh->prepare($sql);
 	$stmt->execute();
 	$rstrong = $stmt->fetchAll( PDO::FETCH_ASSOC );
