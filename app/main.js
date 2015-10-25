@@ -54,7 +54,7 @@ app.controller('HomeCtrl', function ($scope, $http) {
 /**
 * Controls the ContactUs
 */
-app.controller('ContactCtrl', function ($scope,$http) {
+app.controller('ContactCtrl', function ($scope,$http,$window) {
     $scope.submitFeedback = function(){
         $http.post('app/core/contactus.php',
             {
@@ -70,7 +70,7 @@ app.controller('ContactCtrl', function ($scope,$http) {
             }
             $scope.contact_us.$setPristine();
             $scope.feedback = defaultForm;
-            console.log(response);
+            $window.alert('提交成功，感谢您的支持！');
         });
     }
 });

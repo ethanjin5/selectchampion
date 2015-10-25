@@ -11,11 +11,6 @@ $name = $data->name;
 $email = $data->email;
 $feedback = $data->feedback;
 $sql = "INSERT INTO feedback (name,email,feedback)VALUES('$name','$email','$feedback')";
-echo $sql;
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
-if($stmt){
-
-}else{return false;}
-
 ?>
