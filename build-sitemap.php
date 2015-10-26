@@ -37,7 +37,6 @@ $header = '<?xml version="1.0" encoding="UTF-8"?>
   <loc>http://www.xuanyingxiong.com/</loc>
   <lastmod>2015-10-26T01:41:55+00:00</lastmod>
 </url>
-</urlset>
 ';
 $footer = '</urlset>';
 

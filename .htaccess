@@ -10,6 +10,7 @@
 </IfModule>
 RewriteCond %{HTTP_HOST} ^selectchampion\.com$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.selectchampion\.com$
+RewriteCond %{REQUEST_URI} !^/sitemap\.xml$ 
 RewriteRule ^/?$ "http\:\/\/xuanyingxiong\.com" [R=301,L]
 
 ## EXPIRES CACHING ##
