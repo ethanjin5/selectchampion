@@ -27,10 +27,19 @@ app.config(function ($routeProvider, $locationProvider) {
 /**
 * Controls the Home
 */
-app.run(['$location', '$rootScope', function($location, $rootScope) {
+app.run(['$location', '$rootScope','$window', function($location, $rootScope, $window) {
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
         $rootScope.title = current.$$route.title;
     });
+    $rootScope
+        .$on('$stateChangeSuccess',
+            function(event){
+ 
+                if (!$window.ga)
+                    return;
+ 
+                $window.ga('send', 'pageview', { page: $location.path() });
+        });
 }])
 app.controller('HomeCtrl', function ($scope, $http) {
     $http.get("app/core/champion_list_mysql.php")
