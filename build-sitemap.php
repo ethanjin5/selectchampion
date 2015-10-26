@@ -41,7 +41,7 @@ $header = '<?xml version="1.0" encoding="UTF-8"?>
 ';
 $footer = '</urlset>';
 
-$file = 'sitemap.txt';
+$file = 'sitemap.xml';
 // Open the file to get existing content
 //$current = file_get_contents($file);
 // Append a new person to the file
