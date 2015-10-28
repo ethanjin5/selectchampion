@@ -38,18 +38,20 @@
                     <div class="col-md-10 col-md-offset-1">
                         <input ng-model="searchKeyword"  type="text" class="form-control"required="required" placeholder="输入英雄名">
                     </div>
-                    <div class="col-md-10 col-md-offset-1" ng-repeat = "(key,tier) in tiers  | filter: searchKeyword">
-                        {{::tier[key].tier}}
-                        <p class="champion_tier_lane" ng-repeat = "lane in tier  | filter: searchKeyword">
-                            {{::lane.lane}}: 
-                            <span class="tier_champion" ng-repeat = "champion in lane.champions  | filter: searchKeyword">
-                                <a href="/champion/{{::champion.eng_name}}">
-                                    <img ng-src="assets/img/champ_img/{{::champion.eng_name}}.png" width="20px"
-                                                          alt="{{::champion.alias}}">
-                                    {{::champion.alias}}</a>
-                                <span ng-show=" ! $last ">, </span>
-                            </span>
-                        </p>
+                    <div class=" champion_tier_section col-md-10 col-md-offset-1" ng-repeat = "(key,tier) in ::tiers  | filter: searchKeyword">
+                        <p>{{::tier[key].tier}}
+                        <div class="champion_tier_lane" ng-repeat = "lane in tier  | filter: searchKeyword">
+                            <div class="col-md-2">{{::lane.lane}}:</div>
+                            <div class="col-md-10">
+                                <span class="tier_champion" ng-repeat = "champion in ::lane.champions  | filter: searchKeyword">
+                                    <a href="/champion/{{::champion.eng_name}}">
+                                        <img ng-src="assets/img/champ_img/{{::champion.eng_name}}.png" width="20px"
+                                                              alt="{{::champion.alias}}">
+                                        {{::champion.alias}}</a>
+                                    <span ng-show=" ! $last ">, </span>
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

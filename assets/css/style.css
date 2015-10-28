@@ -1994,11 +1994,23 @@ Site's Personal style
     padding: 0;
 }
 
+.champion_tier_section{
+    margin-top: 30px;
+}
+.champion_tier_lane{
+    height: auto;
+    overflow: auto;
+    margin-bottom:20px;
+    line-height: 35px;
+}
 .tier_champion{
     display:inline-block;
     margin-right: 8px;
 }
 
+.tier_lane{
+    width: 100px;
+}
 @media (min-width: 992px){
     .champion-item-list .col-md-2 {
         width: 12.5%;
