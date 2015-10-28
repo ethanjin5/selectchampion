@@ -1,25 +1,29 @@
 <?php
 header("Content-Type: text/html");
-require('app/classes/AltoRouter.php');
+require("app/includes/initial.php");
+
 $router = new AltoRouter();
 $router->setBasePath('');
 
-$router->map('GET','/', 'home.php', '主页');
-$router->map('GET','/champions/', 'home.php', '英雄列表');
-$router->map('GET','/champion/[*:champion_name]','champion.php','英雄');
-$router->map('GET','/champion/tips/[*:champion_name]/[*:champion_name]','tips.php','技巧');
-$router->map('GET','/tier/', 'tier.php', '阶梯排名');
+$dbh = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
+$dbh->query('set names utf8;');
+
+$router->map('GET','/', 'home.view.php', '主页');
+$router->map('GET','/champions/', 'home.view.php', '英雄列表');
+$router->map('GET','/champion/[*:champion_name]','champion.view.php','英雄');
+$router->map('GET','/champion/tips/[*:champion_weak]/[*:champion_strong]','tips.view.php','技巧');
+$router->map('GET','/tier/', 'tier.view.php', '阶梯排名');
 $router->map('GET','/blog/', 'blog.html', '论坛');
 $router->map('GET','/contact/', 'contactus.html', '关于我们');
 
 $match = $router->match();
 if($match) {
-    switch($match['name']){
-        case '英雄列表'||'主页':
+    switch($match['target']){
+        case 'home.view.php':
             echo "homepage";
             break;
-        case '英雄':
-            echo "hahahaha";
+        case 'champion.view.php':
+            $champion = new Champion($dbh,$match['params']['champion_name']);
             break;
     }
 ?>

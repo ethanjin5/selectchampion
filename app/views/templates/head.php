@@ -8,10 +8,10 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
     <!-- stylesheets -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!--  Necessary scripts(vendor)  -->
-    <script type="text/javascript" src="assets/js/vendor/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="assets/js/vendor/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="assets/js/vendor/bootstrap.min.js"></script>
 </head>

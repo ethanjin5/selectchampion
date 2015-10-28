@@ -8,7 +8,7 @@
 
                         <ol class="breadcrumb">
                             <li><a href="/">英雄列表</a></li>
-                            <li class="active">{{::champion.name}}</li>
+                            <li class="active"><?php echo $champion->name; ?></li>
                         </ol> <!-- end of /.breadcrumb -->
 
                     </div>
@@ -28,10 +28,10 @@
                         <p class="text-center question-alert"><a href="/contact/#contact">若您有任何问题或建议，请点击此处联系我们！</a></p>
                         <div class="col-md-6">
                             <div class="champion_detail">
-                                <img class="detail-img" ng-src="assets/img/champ_img/{{::champion.eng_name}}.png" alt="{{::champion.name}}">
-                                <h2 class="detail-title">{{::champion.name}}</h2>
-                                <h3 class="detail-title">{{::champion.alias}}</h3>
-                                <h4 class="detail-title">{{::champion.tags}}</h4>
+                                <img class="detail-img" src="assets/img/champ_img/<?php echo $champion->eng_name; ?>.png" alt="<?php echo $champion->name; ?>">
+                                <h2 class="detail-title"><?php echo $champion->name; ?></h2>
+                                <h3 class="detail-title"><?php echo $champion->alias; ?></h3>
+                                <h4 class="detail-title"><?php echo $champion->tags; ?></h4>
                             </div>
                         </div>
                         <div class="col-md-12">
