@@ -2002,6 +2002,7 @@ Site's Personal style
     overflow: auto;
     margin-bottom:20px;
     line-height: 35px;
+    border-bottom: 1px solid #ddd;
 }
 .tier_champion{
     display:inline-block;
