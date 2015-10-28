@@ -80,7 +80,11 @@ function upvote(){
 	global $dbh;
 	$data = json_decode(file_get_contents("php://input"));
 	$id = $data->counter_id;
-	$sql = "UPDATE counter SET upvote = upvote + 1 where id = $id";
+    if ($_GET['cancel']=='true'){
+        $sql = "UPDATE counter SET upvote = upvote - 1 where id = $id";
+    }else{
+        $sql = "UPDATE counter SET upvote = upvote + 1 where id = $id";
+    }
 	$stmt = $dbh->prepare($sql);
 	$stmt->execute();
 	$outp = '{"id":"'.$sql.'"}'; //unecessary - for future reference
@@ -91,7 +95,11 @@ function downvote(){
 	global $dbh;
 	$data = json_decode(file_get_contents("php://input"));
 	$id = $data->counter_id;
-	$sql = "UPDATE counter SET downvote = downvote - 1 where id = $id";
+    if ($_GET['cancel']=='true'){
+        $sql = "UPDATE counter SET downvote = downvote + 1 where id = $id";
+    }else{
+        $sql = "UPDATE counter SET downvote = downvote - 1 where id = $id";
+    }
 	$stmt = $dbh->prepare($sql);
 	$stmt->execute();
 }

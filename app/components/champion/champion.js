@@ -14,6 +14,8 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
 
 .controller('ChampionCtrl', function ($scope, $routeParams, $http, $timeout) {
     $scope.champion_name = $routeParams.name;
+    $scope.upvoted = [];
+    $scope.downvoted = [];
     getInfo();
     $timeout(function(){
         $scope.getCounters($scope.champ_id,'全部');
@@ -56,24 +58,34 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
 
     //update upvote
     $scope.upvote = function(id,champ_id,type) {
-        $http.post('app/components/champion/champion_mysql.php?action=upvote', 
+        
+        if($scope.upvoted.indexOf(id) > -1){var cancel = true;}else{cancel=false;}
+        $http.post('app/components/champion/champion_mysql.php?action=upvote&cancel='+cancel, 
             {
                 'counter_id'    : id
             }
         )
         .success(function (response) {
             $scope.getCounters(champ_id,type);
+            if($scope.upvoted.indexOf(id) > -1){
+                $scope.upvoted.splice($scope.upvoted.indexOf(id),1);
+            }else{$scope.upvoted.push(id);}
+            
         });
     }
 
     $scope.downvote = function(id,champ_id,type) {
-        $http.post('app/components/champion/champion_mysql.php?action=downvote', 
+        if($scope.downvoted.indexOf(id) > -1){var cancel = true;}else{cancel=false;}
+        $http.post('app/components/champion/champion_mysql.php?action=downvote&cancel='+cancel, 
             {
                 'counter_id'    : id
             }
         )
         .success(function (response) {
             $scope.getCounters(champ_id,type);
+            if($scope.downvoted.indexOf(id) > -1){
+                $scope.downvoted.splice($scope.downvoted.indexOf(id),1);
+            }else{$scope.downvoted.push(id);}
         });
     }
     
