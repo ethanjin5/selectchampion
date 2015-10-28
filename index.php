@@ -6,14 +6,22 @@ $router->setBasePath('');
 
 $router->map('GET','/', 'home.php', '主页');
 $router->map('GET','/champions/', 'home.php', '英雄列表');
-$router->map('GET','/champion/[*:champion_name]/','champion.php','英雄');
-$router->map('GET','/champion/tips/[*:champion_name]/[*:champion_name]/','tips.php','技巧');
+$router->map('GET','/champion/[*:champion_name]','champion.php','英雄');
+$router->map('GET','/champion/tips/[*:champion_name]/[*:champion_name]','tips.php','技巧');
 $router->map('GET','/tier/', 'tier.php', '阶梯排名');
 $router->map('GET','/blog/', 'blog.html', '论坛');
 $router->map('GET','/contact/', 'contactus.html', '关于我们');
 
 $match = $router->match();
 if($match) {
+    switch($match['name']){
+        case '英雄列表'||'主页':
+            echo "homepage";
+            break;
+        case '英雄':
+            echo "hahahaha";
+            break;
+    }
 ?>
 <!doctype html>
 <html>

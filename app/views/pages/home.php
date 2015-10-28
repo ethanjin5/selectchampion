@@ -9,7 +9,7 @@
 
                 <div class="headline">
                     <div class="row">
-                        <a class="text-center" href="/contact#contact"><uib-alert>若您有任何问题或建议，请点击此处联系我们！</uib-alert></a>
+                        <p class="text-center question-alert"><a href="/contact/#contact">若您有任何问题或建议，请点击此处联系我们！</a></p>
                         <div class="col-md-6">
                             <h2 class="section-title">英雄列表</h2>
                             <h4 class="section-sub-title">

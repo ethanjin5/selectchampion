@@ -25,7 +25,7 @@
                 
                 <div class="headline">
                     <div class="row">
-                        <a class="text-center" href="/contact#contact"><uib-alert>若您有任何问题或建议，请点击此处联系我们！</uib-alert></a>
+                        <p class="text-center question-alert"><a href="/contact/#contact">若您有任何问题或建议，请点击此处联系我们！</a></p>
                         <div class="col-md-6">
                             <div class="champion_detail">
                                 <img class="detail-img" ng-src="assets/img/champ_img/{{::champion.eng_name}}.png" alt="{{::champion.name}}">

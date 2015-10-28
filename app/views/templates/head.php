@@ -1,6 +1,6 @@
 <head>
     <meta charset="utf-8">
-    <title>选英雄-主页</title>
+    <title>选英雄-<?php echo $match['name']; ?></title>
     <base href="/" />
     <meta name="keywords" content="英雄联盟，英雄克制关系，阶梯排名" />
     <meta name="description" content="帮助您在英雄联盟中提高段位，了解英雄克制以及被克制的关系，让你在选英雄时更有准备，对战时更自信，赢得比赛更轻松。">

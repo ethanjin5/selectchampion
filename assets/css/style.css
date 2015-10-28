@@ -1930,6 +1930,10 @@ Tags: responsive layout, multiple-page
 /*
 Site's Personal style
 */
+
+.question-alert{
+    margin-bottom: 0px;
+}
 .purple{
     color: #574D86;
 }
