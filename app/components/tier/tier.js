@@ -13,11 +13,18 @@ angular.module('tier',['ngRoute'])
 })
 .controller('TierCtrl', function ($scope, $http) {
     getInfo();
+    $scope.totalDisplayed = 2;
+    $scope.tierBold=['Amumu','Darius','Fiora','DrMundo','Riven','Sona'];
+
     function getInfo(){
         $http.get("app/components/tier/tier_mysql.php?action=getInfo")
             .success(function(response) {
                 $scope.tiers = response;
             });
+    }
+    
+    $scope.loadMore = function(){
+        $scope.totalDisplayed = 5;
     }
 
 });

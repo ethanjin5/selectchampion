@@ -2012,6 +2012,13 @@ Site's Personal style
 .tier_lane{
     width: 100px;
 }
+.tier-bold{
+    font-weight: bold;
+    color: magenta;
+}
+.tier-explain{
+    margin-top:50px;
+}
 @media (min-width: 992px){
     .champion-item-list .col-md-2 {
         width: 12.5%;

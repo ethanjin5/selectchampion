@@ -31,6 +31,7 @@
                         <div class="col-md-6 col-md-offset-3">
                             <h2 class="section-title">英雄排名</h2>
                             <h4>[更新] 英雄联盟版本 5.20 单排英雄排名列表</h4>
+                            <p>*<span class="tier-bold">紫色</span>标注的英雄，在列表下方有额外的英雄排名解释</p><!--TODO: Add this and explaination section into database, add backend support -->
                         </div>
                     </div>
                 </div> <!-- /.headline -->
@@ -39,13 +40,13 @@
                     <div class="col-md-10 col-md-offset-1">
                         <input ng-model="searchKeyword"  type="text" class="form-control"required="required" placeholder="输入英雄名">
                     </div>
-                    <div class=" champion_tier_section col-md-10 col-md-offset-1" ng-repeat = "(key,tier) in ::tiers  | filter: searchKeyword">
+                    <div class=" champion_tier_section col-md-10 col-md-offset-1" ng-repeat = "(key,tier) in tiers  | filter: searchKeyword | limitTo:totalDisplayed">
                         <p>{{::tier[key].tier}}
                         <div class="champion_tier_lane" ng-repeat = "lane in tier  | filter: searchKeyword">
                             <div class="col-md-2">{{::lane.lane}}:</div>
                             <div class="col-md-10">
                                 <span class="tier_champion" ng-repeat = "champion in ::lane.champions  | filter: searchKeyword">
-                                    <a href="/champion/{{::champion.eng_name}}">
+                                    <a href="/champion/{{::champion.eng_name}}"  ng-class="{'tier-bold':tierBold.indexOf(champion.eng_name) != -1}">
                                         <img ng-src="assets/img/champ_img/{{::champion.eng_name}}.png" width="20px"
                                                               alt="{{::champion.alias}}">
                                         {{::champion.alias}}</a>
@@ -53,6 +54,19 @@
                                 </span>
                             </div>
                         </div>
+                    </div>
+                    <button ng-show="totalDisplayed<5" class="btn btn-default home-btn" ng-click="loadMore()">显示更多排名</button>
+                    <div class="col-md-10 col-md-offset-1 tier-explain">
+                            <p><span class="tier-bold">阿木木[打野]</span> - 随着版本改动，物理英雄慢慢的霸占了主流，再加上附魔吞噬者的削弱 和 附魔符文阔剑的加强。 阿木木也慢慢的回到了大家的视野。 他容易上手，并且可以轻易造成大量伤害。我们只要照顾好大局即可，并不需要大量的练习便能使用阿木木赢得比赛</p>
+                           
+                            <p><span class="tier-bold">小学生之手[上单]</span> - 小学生之手这个版本被削弱了极多。 赢率排名上从前五几乎掉到倒数第五。 很多玩家都表示小学生之手废了，但是其实还是相对平衡的。我们会持续关注他，等有更多的数据了再做评估</p>
+                           
+                            <p><span class="tier-bold">菲奥娜[上单]</span> - 菲奥娜虽然被削了，但是仍然留在了一等阶梯里，只是已经没有ban她的必要了</p>
+                          
+                                <p><span class="tier-bold">瑞文[上单]</span> - 随着小学生之手，菲奥娜的削弱， 和盖伦的ban率。 瑞文成为了上单赤手可得的英雄， 排入了神级阶梯</p>
+                      
+                                <p><span class="tier-bold">琴女[辅助]</span> - 琴女可以说是辅助中一等最厉害的，但是还没能完全晋级到神级辅助的阶梯里。所以这个版本将她降到了一等阶梯</p>
+                         
                     </div>
                 </div>
             </div>
