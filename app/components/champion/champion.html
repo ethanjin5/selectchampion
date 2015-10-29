@@ -36,7 +36,22 @@
                         </div>
                         <div class="col-md-12">
                             <h4>通用对战技巧：</h4>
-                            <p ng-repeat = "tip in generalTips">{{tip.vote}}{{tip.tip}} - {{tip.author}}</p>
+                            <div class="champion-tip" ng-repeat = "tip in generalTips"><div class="tip-vote-div">
+                                <div class="tip-vote-num">{{::tip.vote}}</div>
+                                <div class="tip-vote-icon">
+                                <button type="button" class="btn-xs btn-default" aria-label="Upvote" 
+                                        ng-click="tipUpvote(tip.id)">
+                                  <span class="glyphicon glyphicon-menu-up"></span>
+                                </button><br>
+                                <button type="button" class="btn-xs btn-default" aria-label="Downvote" 
+                                        ng-click="tipDownvote(tip.id)">
+                                  <span class="glyphicon glyphicon-menu-down"></span>
+                                </button>
+                                </div>
+                            </div>
+                            <div class="tip-content-div col-md-10 col-xs-10">
+                                {{::tip.tip}} <br>Submitted By <span class="grey">{{::tip.author}}</span>
+                            </div></div>
                         </div>
                     </div>
                 </div> <!-- /.headline -->

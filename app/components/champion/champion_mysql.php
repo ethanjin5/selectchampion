@@ -24,12 +24,18 @@ switch($_GET['action']){
         break;
     case 'getGeneralTips':
         $champ_id = $_GET['param'];
-        $sql = "SELECT tip, date_time, author, vote FROM general_tips WHERE champion_id = $champ_id";
+        $sql = "SELECT id, tip, date_time, author, vote FROM general_tips WHERE champion_id = $champ_id";
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
         $rs = $stmt->fetchAll( PDO::FETCH_ASSOC );
         $outp = json_encode($rs);
         echo $outp;
+        break;
+    case 'tipUpvote':
+        tipUpvote();
+        break;
+    case 'tipDownvote':
+        tipDownvote();
         break;
     case 'getCounters':
         $outp = getCounters();
@@ -45,6 +51,27 @@ switch($_GET['action']){
         echo getTips();
         break;
 }
+
+function tipUpvote(){
+    global $dbh;
+	$data = json_decode(file_get_contents("php://input"));
+	$tip_id = $data->tip_id;
+    $sql = "UPDATE general_tips SET vote = vote + 1 where id = $tip_id";
+	$stmt = $dbh->prepare($sql);
+	$stmt->execute();
+}
+
+function tipDownvote(){
+    global $dbh;
+	$data = json_decode(file_get_contents("php://input"));
+	$tip_id = $data->tip_id;
+
+    $sql = "UPDATE general_tips SET vote = vote - 1 where id = $tip_id";
+    
+	$stmt = $dbh->prepare($sql);
+	$stmt->execute();
+}
+
 
 function getCounters(){
 	global $dbh;

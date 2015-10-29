@@ -102,8 +102,29 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
     $scope.TipPopover = {
         content: 'load $scope.tips', //TODO: tips loading are slower than popover, need a better method
         templateUrl: 'PopoverTipTemplate.html'
-      };
+    }
     
+    $scope.tipUpvote = function(tip_id){
+        $http.post('app/components/champion/champion_mysql.php?action=tipUpvote', 
+            {
+                'tip_id'    : tip_id
+            }
+        )
+        .success(function (response) {
+            $scope.getGeneralTips($scope.champ_id);
+        });
+    }
+    $scope.tipDownvote = function(tip_id){
+        $http.post('app/components/champion/champion_mysql.php?action=tipDownvote', 
+            {
+                'tip_id'    : tip_id
+            }
+        )
+        .success(function (response) {
+            $scope.getGeneralTips($scope.champ_id);
+        });
+    }
+
     
 
 });

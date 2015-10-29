@@ -1950,6 +1950,21 @@ Site's Personal style
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
 }
+.tip-vote-div{
+    width:8%;
+    float: left;
+}
+.tip-vote-num{
+    float: left;
+    margin-top: 8%;
+    width: 40%;
+    padding-left: 11px;
+}
+.tip-vote-icon{
+    float: left;
+    padding-left: 4px;
+}
+
 .counter-thumbnail{
     width:50px;
 }
