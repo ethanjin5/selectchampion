@@ -31,6 +31,9 @@ switch($_GET['action']){
         $outp = json_encode($rs);
         echo $outp;
         break;
+    case 'submitGeneralTip':
+        submitGeneralTip();
+        break;
     case 'tipUpvote':
         tipUpvote();
         break;
@@ -72,6 +75,17 @@ function tipDownvote(){
 	$stmt->execute();
 }
 
+function submitGeneralTip(){
+    global $dbh;
+	$data = json_decode(file_get_contents("php://input"));
+	$champion_id = $data->champion_id;
+    $name = $data->name;
+    $tip = $data->tip;
+	$sql = "INSERT INTO general_tips (champion_id,tip,author)VALUES($champion_id,'$tip','$name')";
+	$stmt = $dbh->prepare($sql);
+	$stmt->execute();
+    
+}
 
 function getCounters(){
 	global $dbh;

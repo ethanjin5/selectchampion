@@ -2064,3 +2064,18 @@ Site's Personal style
         width: 200px;
     }
 }
+
+.generalTip-form-group-name{
+    width: 47%;
+    margin-right: 6%;
+    float: left;
+}
+.generalTip-form-group-email{
+    width: 47%;
+    float:left;
+}
+.generalTip-form-group-content{
+    margin: 20px 0;
+    float:left;
+    width: 100%;
+}

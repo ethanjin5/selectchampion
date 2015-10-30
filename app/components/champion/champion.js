@@ -12,7 +12,7 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
   $locationProvider.html5Mode(true);
 })
 
-.controller('ChampionCtrl', function ($scope, $routeParams, $http, $timeout, $modal) {
+.controller('ChampionCtrl', function ($scope, $routeParams, $http, $timeout, $uibModal, $log) {
     $scope.champion_name = $routeParams.name;
     $scope.upvoted = [];
     $scope.downvoted = [];
@@ -55,12 +55,23 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
         });
     }
     
-    $scope.open = function () {
-        var $uibModalInstance = $modal.open({
-            templateUrl: 'myModalContent.html',
-            controller: 'ModalInstanceCtrl'
-        });
-    };
+    //figured it out :::::
+
+    $scope.open = function (champ_id,champ_name) {
+
+    var modalInstance = $uibModal.open({
+      templateUrl: 'myModalContent.html',
+      controller: 'ModalInstanceCtrl',
+      resolve: {
+        champ_id: function () {
+           return champ_id;
+         },
+        champ_name: function(){
+            return champ_name;}
+      }
+    });
+
+  };
 
     //update upvote
     $scope.upvote = function(id,champ_id,type) {
@@ -131,71 +142,44 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
         });
     }
     
-    $scope.addGeneralTip = function(champ_id){
-        $http.post('app/components/champion/champion_mysql.php?action=addGeneralTip', 
-            {
-                'champ'    : champ_id
-            }
-        )
-        .success(function (response) {
-            $scope.getGeneralTips($scope.champ_id);
-        });
-    }
-    
 });
 
-angular.module('champion').controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items) {
-
-  $scope.items = items;
-  $scope.selected = {
-    item: $scope.items[0]
-  };
-
-  $scope.ok = function () {
-    $uibModalInstance.close($scope.selected.item);
-  };
-
-  $scope.cancel = function () {
-    $uibModalInstance.dismiss('cancel');
-  };
-});
-
-
-
-
-//figured it out :::::
-angular.module('ui.bootstrap.demo', ['ngAnimate', 'ui.bootstrap']);
-angular.module('ui.bootstrap.demo').controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
-
-  $scope.items = ['item1', 'item2', 'item3'];
-
-  $scope.open = function (size) {
-    var modalInstance = $uibModal.open({
-      templateUrl: 'myModalContent.html',
-      controller: 'ModalInstanceCtrl',
-      size: size,
-      resolve: {
-        
-      }
-    });
-
-
-  };
-
-
-});
 
 // Please note that $modalInstance represents a modal window (instance) dependency.
 // It is not the same as the $uibModal service used above.
 
-angular.module('ui.bootstrap.demo').controller('ModalInstanceCtrl', function ($scope, $uibModalInstance) {
+angular.module('champion').controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, $http, champ_id, champ_name) {
+    $scope.champ_id = champ_id;
+    $scope.champ_name = champ_name;
 
+    $scope.ok = function () {
+        $uibModalInstance.close($scope.selected.item);
+    };
+    
+    $scope.submitTip = function(champion_id){
+        console.log(champion_id);
+        $http.post('app/components/champion/champion_mysql.php?action=submitGeneralTip',
+            {
+                'champion_id'       : champion_id,
+                'name'              : $scope.tip.name,
+                'tip'               : $scope.tip.tip
+            }
+        )
+        .success(function(response){
+            var defaultForm = {
+                champion_id     : "",
+                name            : "",
+                email           : "",
+                tip             : ""
+            }
+            $scope.add_tip.$setPristine();
+            $scope.tip = defaultForm;
+            //$scope.getGeneralTips($scope.champ_id);
+            $uibModalInstance.close($scope.getGeneralTips($scope.champ_id));
+        });
+    }
 
-  $scope.ok = function () {
-    $uibModalInstance.close();
-  };
-
-  $scope.cancel = function () {
-    $uibModalInstance.dismiss('cancel');
-  };
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
 });

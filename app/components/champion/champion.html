@@ -52,24 +52,38 @@
                             <div class="tip-content-div col-md-10 col-xs-10">
                                 {{::tip.tip}} <br>Submitted By <span class="grey">{{::tip.author}}</span>
                             </div></div>
-                            <button class="btn btn-default vote-btn" ng-click="open()">添加技巧</button>
+                            <button class="btn btn-default vote-btn" ng-click="open(champ_id, champion.alias)">添加技巧</button>
                             <script type="text/ng-template" id="myModalContent.html">
-        <div class="modal-header">
-            <h3 class="modal-title">I'm a modal!</h3>
-        </div>
-        <div class="modal-body">
-            <ul>
-                <li ng-repeat="item in items">
-                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                </li>
-            </ul>
-            Selected: <b>{{ selected.item }}</b>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-        </div>
-    </script>
+                                <div class="modal-header">
+                                    <h3 class="modal-title">如何对战{{champ_name}}？</h3>
+                                </div>
+                                <form name='add_tip' ng-submit = "submitTip(champ_id)">
+                                <div class="modal-body">
+                                        <div class="row col-md-10 col-md-offset-1">
+                                            <div class="">
+
+                                                <div class="generalTip-form-group-name">
+                                                    <input name="name" ng-model="tip.name" type="text" class="form-control" id="name" required="required" placeholder="姓名">
+                                                </div>
+
+                                                <div class="generalTip-form-group-email">
+                                                    <input name="email" ng-model="tip.email" type="email" class="form-control" id="email" placeholder="邮件地址">
+                                                </div>
+
+                                            </div>
+
+                                            <div class="generalTip-form-group-content">
+                                                <textarea name="tip" ng-model="tip.tip" type="text" class="form-control" id="tip" rows="5" required="required" placeholder="请输入技巧"></textarea>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" type="submit">提交技巧</button>
+                                    <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+                                </div>
+                                </form> <!-- form end -->
+
+                            </script>
                         </div>
                     </div>
                 </div> <!-- /.headline -->
@@ -89,7 +103,7 @@
         <section class="bg-light-gray skill">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-7 champion-tabs">
+                    <div class="col-md-7 champion-tabs"
                         <h2>背景故事</h2>
                         <p class="champion-description" ng-bind-html="::champion.description"></p>
                     </div>
