@@ -21,10 +21,12 @@
     </head>
 
     <body>
+        <div id ="scaredPic" style="display: none; position: absolute; z-index: 10;width:100%; cursor:pointer;">
+            <h2 onclick="hideImage()" style="position: absolute;color:#fff;top: 31%;left: 65%;">点击关闭</h2><img width="100%" onclick="hideImage()" src="assets/img/halloween.jpg"></div>
         <div ng-include='"app/core/templates/header.html"'></div>
         <div ng-view autoscroll="true"></div>
         <div ng-include='"app/core/templates/footer.html"'></div>
-
+        
         <!--  Necessary scripts(vendor)  -->
         <script type="text/javascript" src="assets/js/vendor/modernizr.custom.97074.js"></script>		
 
@@ -53,6 +55,14 @@
           var s = document.getElementsByTagName("script")[0]; 		
           s.parentNode.insertBefore(hm, s);		
         })();		
+        </script>
+        <script>
+        $(document).ready(function() {
+            $("#scaredPic").delay(2000).fadeIn(0);
+        });
+            function hideImage(){
+                $("#scaredPic").hide();
+            }
         </script>
     </body>
 </html>
