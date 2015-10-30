@@ -60,18 +60,20 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
     $scope.open = function (champ_id,champ_name) {
 
     var modalInstance = $uibModal.open({
-      templateUrl: 'myModalContent.html',
-      controller: 'ModalInstanceCtrl',
-      resolve: {
+        templateUrl: 'myModalContent.html',
+        controller: 'ModalInstanceCtrl',
+        resolve: {
         champ_id: function () {
-           return champ_id;
-         },
+            return champ_id;
+        },
         champ_name: function(){
             return champ_name;}
-      }
-    });
-
-  };
+        }
+        });
+        modalInstance.result.then(function () {
+            $scope.getGeneralTips($scope.champ_id);
+        });
+    };
 
     //update upvote
     $scope.upvote = function(id,champ_id,type) {
@@ -174,8 +176,8 @@ angular.module('champion').controller('ModalInstanceCtrl', function ($scope, $ui
             }
             $scope.add_tip.$setPristine();
             $scope.tip = defaultForm;
-            //$scope.getGeneralTips($scope.champ_id);
-            $uibModalInstance.close($scope.getGeneralTips($scope.champ_id));
+            
+            $uibModalInstance.close();
         });
     }
 
