@@ -23,7 +23,7 @@ $stmt->execute();
 
 $rs = $stmt->fetchAll( PDO::FETCH_ASSOC );
 foreach($rs as $r){
-    $links[] = "<url><loc>http://www.xuanyingxiong.com/champion/tips/".$r['eng1']."/".$r['eng2']."</loc><mobile:mobile type=\"pc,mobile\"/></url>\n";
+    $links[] = "<url><loc>http://www.xuanyingxiong.com/champion/tips/".$r['eng1']."/".$r['eng2']."</loc><mobile:mobile type='pc,mobile'/></url>\n";
 }
 
 $header = '<?xml version="1.0" encoding="UTF-8"?>
