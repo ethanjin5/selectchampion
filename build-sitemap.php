@@ -23,7 +23,7 @@ $stmt->execute();
 
 $rs = $stmt->fetchAll( PDO::FETCH_ASSOC );
 foreach($rs as $r){
-    $links[] = "<url><loc>http://www.xuanyingxiong.com/champion/tips/".$r['eng1']."/".$r['eng2']."</loc></url>\n";
+    $links[] = "<url><loc>http://www.xuanyingxiong.com/champion/tips/".$r['eng1']."/".$r['eng2']."</loc><mobile:mobile type=\"pc,mobile\"/></url>\n";
 }
 
 $header = '<?xml version="1.0" encoding="UTF-8"?>
@@ -32,10 +32,12 @@ $header = '<?xml version="1.0" encoding="UTF-8"?>
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 <url>
   <loc>http://www.xuanyingxiong.com/</loc>
-  <lastmod>2015-10-26T01:41:55+00:00</lastmod>
+  <lastmod>2015-10-31T17:03:23+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 ';
 $footer = '</urlset>';
