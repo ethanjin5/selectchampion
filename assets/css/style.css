@@ -58,7 +58,7 @@
 
 /*================================= 1. font import  ===========================================*/
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800);
+@import url(../fonts/googlefont.css);
 
 
 
@@ -250,7 +250,7 @@ html {
 /* =-=--=-=-=-=-=-==-=-=-=-  2.3 Header   =-=-=-=-==-=-==-====-==-=- */
 
 #about-page .page-head {
-	background: url(../img/about-bg.jpg);
+	background: url(../img/portfolio-bg.jpg);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -1950,6 +1950,21 @@ Site's Personal style
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
 }
+.tip-vote-div{
+    width:8%;
+    float: left;
+}
+.tip-vote-num{
+    float: left;
+    margin-top: 8%;
+    width: 40%;
+    padding-left: 11px;
+}
+.tip-vote-icon{
+    float: left;
+    padding-left: 4px;
+}
+
 .counter-thumbnail{
     width:50px;
 }
@@ -1994,11 +2009,31 @@ Site's Personal style
     padding: 0;
 }
 
+.champion_tier_section{
+    margin-top: 30px;
+}
+.champion_tier_lane{
+    height: auto;
+    overflow: auto;
+    margin-bottom:20px;
+    line-height: 35px;
+    border-bottom: 1px solid #ddd;
+}
 .tier_champion{
     display:inline-block;
     margin-right: 8px;
 }
 
+.tier_lane{
+    width: 100px;
+}
+.tier-bold{
+    font-weight: bold;
+    color: magenta;
+}
+.tier-explain{
+    margin-top:50px;
+}
 @media (min-width: 992px){
     .champion-item-list .col-md-2 {
         width: 12.5%;
@@ -2028,4 +2063,19 @@ Site's Personal style
     .popover-content{
         width: 200px;
     }
+}
+
+.generalTip-form-group-name{
+    width: 47%;
+    margin-right: 6%;
+    float: left;
+}
+.generalTip-form-group-email{
+    width: 47%;
+    float:left;
+}
+.generalTip-form-group-content{
+    margin: 20px 0;
+    float:left;
+    width: 100%;
 }

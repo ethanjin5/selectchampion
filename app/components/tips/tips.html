@@ -38,20 +38,20 @@
                                  alt="{{::counter.strong.name}}"> {{::counter.strong.name}}</a>
                         </div>
                         <div class="champion-tip" ng-repeat ="tip in tips">
-                            <div class="tip-vote-div col-md-2">
-                                <div class="tip-vote-num col-md-6">{{::tip.vote}}</div>
-                                <div class="tip-vote-icon col-md-6">
-                                <button type="button" class="btn-xs btn-default" aria-label="Upvote" 
+                            <div class="tip-vote-div">
+                                <div class="tip-vote-num">{{::tip.vote}}</div>
+                                <div class="tip-vote-icon">
+                                <button type="button" class="btn-xs btn-default" 
                                         ng-click="upvote(tip.id)">
-                                  <span class="glyphicon glyphicon-menu-up"></span>
-                                </button>
-                                <button type="button" class="btn-xs btn-default" aria-label="Downvote" 
+                                  <span class="glyphicon glyphicon-menu-up"  aria-label="赞"></span>
+                                </button><br>
+                                <button type="button" class="btn-xs btn-default" 
                                         ng-click="downvote(tip.id)">
-                                  <span class="glyphicon glyphicon-menu-down"></span>
+                                  <span class="glyphicon glyphicon-menu-down" aria-label="不赞"></span>
                                 </button>
                                 </div>
                             </div>
-                            <div class="tip-content-div col-md-10">
+                            <div class="tip-content-div col-md-10 col-xs-10">
                                 {{::tip.tip}} <br>Submitted By <span class="grey">{{::tip.author}}</span>
                             </div>
                         </div>

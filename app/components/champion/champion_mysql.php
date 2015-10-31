@@ -24,12 +24,21 @@ switch($_GET['action']){
         break;
     case 'getGeneralTips':
         $champ_id = $_GET['param'];
-        $sql = "SELECT tip, date_time, author, vote FROM general_tips WHERE champion_id = $champ_id";
+        $sql = "SELECT id, tip, date_time, author, vote FROM general_tips WHERE champion_id = $champ_id";
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
         $rs = $stmt->fetchAll( PDO::FETCH_ASSOC );
         $outp = json_encode($rs);
         echo $outp;
+        break;
+    case 'submitGeneralTip':
+        submitGeneralTip();
+        break;
+    case 'tipUpvote':
+        tipUpvote();
+        break;
+    case 'tipDownvote':
+        tipDownvote();
         break;
     case 'getCounters':
         $outp = getCounters();
@@ -44,6 +53,38 @@ switch($_GET['action']){
     case 'getTips':
         echo getTips();
         break;
+}
+
+function tipUpvote(){
+    global $dbh;
+	$data = json_decode(file_get_contents("php://input"));
+	$tip_id = $data->tip_id;
+    $sql = "UPDATE general_tips SET vote = vote + 1 where id = $tip_id";
+	$stmt = $dbh->prepare($sql);
+	$stmt->execute();
+}
+
+function tipDownvote(){
+    global $dbh;
+	$data = json_decode(file_get_contents("php://input"));
+	$tip_id = $data->tip_id;
+
+    $sql = "UPDATE general_tips SET vote = vote - 1 where id = $tip_id";
+    
+	$stmt = $dbh->prepare($sql);
+	$stmt->execute();
+}
+
+function submitGeneralTip(){
+    global $dbh;
+	$data = json_decode(file_get_contents("php://input"));
+	$champion_id = $data->champion_id;
+    $name = $data->name;
+    $tip = $data->tip;
+	$sql = "INSERT INTO general_tips (champion_id,tip,author)VALUES($champion_id,'$tip','$name')";
+	$stmt = $dbh->prepare($sql);
+	$stmt->execute();
+    
 }
 
 function getCounters(){
@@ -80,7 +121,11 @@ function upvote(){
 	global $dbh;
 	$data = json_decode(file_get_contents("php://input"));
 	$id = $data->counter_id;
-	$sql = "UPDATE counter SET upvote = upvote + 1 where id = $id";
+    if ($_GET['cancel']=='true'){
+        $sql = "UPDATE counter SET upvote = upvote - 1 where id = $id";
+    }else{
+        $sql = "UPDATE counter SET upvote = upvote + 1 where id = $id";
+    }
 	$stmt = $dbh->prepare($sql);
 	$stmt->execute();
 	$outp = '{"id":"'.$sql.'"}'; //unecessary - for future reference
@@ -91,7 +136,11 @@ function downvote(){
 	global $dbh;
 	$data = json_decode(file_get_contents("php://input"));
 	$id = $data->counter_id;
-	$sql = "UPDATE counter SET downvote = downvote - 1 where id = $id";
+    if ($_GET['cancel']=='true'){
+        $sql = "UPDATE counter SET downvote = downvote + 1 where id = $id";
+    }else{
+        $sql = "UPDATE counter SET downvote = downvote - 1 where id = $id";
+    }
 	$stmt = $dbh->prepare($sql);
 	$stmt->execute();
 }

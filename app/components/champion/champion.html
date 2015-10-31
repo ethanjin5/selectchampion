@@ -36,7 +36,54 @@
                         </div>
                         <div class="col-md-12">
                             <h4>通用对战技巧：</h4>
-                            <p ng-repeat = "tip in generalTips">{{tip.vote}}{{tip.tip}} - {{tip.author}}</p>
+                            <div class="champion-tip" ng-repeat = "tip in generalTips"><div class="tip-vote-div">
+                                <div class="tip-vote-num">{{::tip.vote}}</div>
+                                <div class="tip-vote-icon">
+                                <button type="button" class="btn-xs btn-default" 
+                                        ng-click="tipUpvote(tip.id)">
+                                  <span class="glyphicon glyphicon-menu-up" aria-label="赞"></span>
+                                </button><br>
+                                <button type="button" class="btn-xs btn-default" 
+                                        ng-click="tipDownvote(tip.id)">
+                                  <span class="glyphicon glyphicon-menu-down" aria-label="不赞"></span>
+                                </button>
+                                </div>
+                            </div>
+                            <div class="tip-content-div col-md-10 col-xs-10">
+                                {{::tip.tip}} <br>Submitted By <span class="grey">{{::tip.author}}</span>
+                            </div></div>
+                            <button class="btn btn-default vote-btn" ng-click="open(champ_id, champion.alias)">添加技巧</button>
+                            <script type="text/ng-template" id="myModalContent.html">
+                                <div class="modal-header">
+                                    <h3 class="modal-title">如何对战{{champ_name}}？</h3>
+                                </div>
+                                <form name='add_tip' ng-submit = "submitTip(champ_id)">
+                                <div class="modal-body">
+                                        <div class="row col-md-10 col-md-offset-1">
+                                            <div class="">
+
+                                                <div class="generalTip-form-group-name">
+                                                    <input name="name" ng-model="tip.name" type="text" class="form-control" id="name" required="required" placeholder="姓名">
+                                                </div>
+
+                                                <div class="generalTip-form-group-email">
+                                                    <input name="email" ng-model="tip.email" type="email" class="form-control" id="email" placeholder="邮件地址">
+                                                </div>
+
+                                            </div>
+
+                                            <div class="generalTip-form-group-content">
+                                                <textarea name="tip" ng-model="tip.tip" type="text" class="form-control" id="tip" rows="5" required="required" placeholder="请输入技巧"></textarea>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" type="submit">提交技巧</button>
+                                    <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+                                </div>
+                                </form> <!-- form end -->
+
+                            </script>
                         </div>
                     </div>
                 </div> <!-- /.headline -->
@@ -56,7 +103,7 @@
         <section class="bg-light-gray skill">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-7 champion-tabs">
+                    <div class="col-md-7 champion-tabs"
                         <h2>背景故事</h2>
                         <p class="champion-description" ng-bind-html="::champion.description"></p>
                     </div>
@@ -116,10 +163,10 @@
                                                     <a href="/champion/{{::counter.eng_name}}">{{::counter.champion_against}}</a>
                                                 </td>
                                                 <td><button class="btn btn-default vote-btn" ng-click="upvote(counter.id,champion.id,type.type)">
-                                                    <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>{{::counter.upvote}}
+                                                    <span class="glyphicon glyphicon-menu-up" aria-label="赞" aria-hidden="true"></span>{{::counter.upvote}}
                                                 </button></td>
                                                 <td><button class="btn btn-default vote-btn" ng-click="downvote(counter.id,champion.id,type.type)">
-                                                    <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>{{::counter.downvote}}
+                                                    <span class="glyphicon glyphicon-menu-down" aria-label="不赞" aria-hidden="true"></span>{{::counter.downvote}}
                                                 </button></td>
                                                 <td>
                                                     <a href="/champion/tips/{{::key=='weak'? champion.eng_name:counter.eng_name}}/{{::key=='weak'? counter.eng_name:champion.eng_name}}">
