@@ -2079,3 +2079,20 @@ Site's Personal style
     float:left;
     width: 100%;
 }
+#scaredPic{	
+  display: none;
+  position: relative;	
+
+    cursor: pointer;
+    z-index: 100;
+    width: 100%;
+    display: block;
+    cursor: pointer;
+}
+
+#inner{	
+  position: absolute;	
+    height: 100%;
+  left:20%;	
+  background-color: #00c;
+}
