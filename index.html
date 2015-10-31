@@ -21,9 +21,6 @@
     </head>
 
     <body>
-        <div id ="scaredPic">
-            <div id="inner">
-            <h2 onclick="hideImage()" style="position: absolute;color:#fff;top: 31%;left: 65%;">点击关闭</h2><img onclick="hideImage()" src="assets/img/halloween.jpg"></div></div>
         <div ng-include='"app/core/templates/header.html"'></div>
         <div ng-view autoscroll="true"></div>
         <div ng-include='"app/core/templates/footer.html"'></div>
@@ -56,14 +53,6 @@
           var s = document.getElementsByTagName("script")[0]; 		
           s.parentNode.insertBefore(hm, s);		
         })();		
-        </script>
-        <script>
-        $(document).ready(function() {
-            $("#scaredPic").delay(2000).fadeOut(0);
-        });
-            function hideImage(){
-                $("#scaredPic").hide();
-            }
         </script>
     </body>
 </html>
