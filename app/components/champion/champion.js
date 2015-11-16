@@ -58,17 +58,16 @@ angular.module('champion',['ngRoute', 'ngSanitize','ui.bootstrap'])
     //figured it out :::::
 
     $scope.open = function (champ_id,champ_name) {
-
-    var modalInstance = $uibModal.open({
-        templateUrl: 'myModalContent.html',
-        controller: 'ModalInstanceCtrl',
-        resolve: {
-        champ_id: function () {
-            return champ_id;
-        },
-        champ_name: function(){
-            return champ_name;}
-        }
+        var modalInstance = $uibModal.open({
+            templateUrl: 'myModalContent.html',
+            controller: 'ModalInstanceCtrl',
+            resolve: {
+            champ_id: function () {
+                return champ_id;
+            },
+            champ_name: function(){
+                return champ_name;}
+            }
         });
         modalInstance.result.then(function () {
             $scope.getGeneralTips($scope.champ_id);
