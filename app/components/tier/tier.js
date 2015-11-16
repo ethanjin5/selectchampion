@@ -14,7 +14,7 @@ angular.module('tier',['ngRoute'])
 .controller('TierCtrl', function ($scope, $http) {
     getInfo();
     $scope.totalDisplayed = 2;
-    $scope.tierBold=['Amumu','Darius','Fiora','DrMundo','Riven','Sona'];
+    $scope.tierBold=['Anivia','Brand','DrMundo','Graves','Kayle','MissFortune','Rammus','Malphite','Taric'];
 
     function getInfo(){
         $http.get("app/components/tier/tier_mysql.php?action=getInfo")
