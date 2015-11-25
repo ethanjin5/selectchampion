@@ -13,8 +13,6 @@ switch($_GET['action']){
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
         $result = array();
-        $info = array();
-        $only_once =false;
         while($rs = $stmt->fetch( PDO::FETCH_ASSOC )){
             $tmp = explode(",",$rs['champions']);
             $tmp_sql = 'SELECT name,eng_name,alias,keywords FROM champion_list where eng_name IN("' . implode('", "', $tmp) . '")';
@@ -41,10 +39,8 @@ switch($_GET['action']){
             else{
                 $result['else'][]=$rs;
             }
-            $info['info'] = $rs['patch'];
-            $info['created'] = $rs['created'];
         }
-        $outp = '{"info":'.json_encode($info).',"result":'.json_encode($result).'}';
+        $outp = json_encode($result);
         echo($outp);
         break;
 }

@@ -19,8 +19,7 @@ angular.module('tier',['ngRoute'])
     function getInfo(){
         $http.get("app/components/tier/tier_mysql.php?action=getInfo")
             .success(function(response) {
-                $scope.tiers = response.result;
-                $scope.info = response.info;
+                $scope.tiers = response;
             });
     }
     
