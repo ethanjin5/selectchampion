@@ -13,6 +13,7 @@ switch($_GET['action']){
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
         $result = array();
+        $info = array();
         $only_once =false;
         while($rs = $stmt->fetch( PDO::FETCH_ASSOC )){
             $tmp = explode(",",$rs['champions']);
@@ -40,10 +41,10 @@ switch($_GET['action']){
             else{
                 $result['else'][]=$rs;
             }
-            $result['info'] = $rs['patch'];
-            $result['created'] = $rs['created'];
+            $info['info'] = $rs['patch'];
+            $info['created'] = $rs['created'];
         }
-        $outp = json_encode($result);
+        $outp = '{"info":'.json_encode($info).',"result":'.json_encode($result).'}';
         echo($outp);
         break;
 }
