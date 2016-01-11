@@ -1,5 +1,5 @@
 <!-- site-navigation start -->  
-<nav id="mainNavigation" class="navbar navbar-dafault main-navigation" role="navigation">
+<nav id="mainNavigation" class="navbar navbar-dafault main-navigation" role="navigation" ng-controller="HeaderCtrl">
     <div class="container">
         
         <div class="navbar-header">
@@ -26,6 +26,7 @@
 
         <!-- nav links -->
         <div class="collapse navbar-collapse" id="main-nav-collapse">
+            <div class="floatright"><input auto-complete id="championSearch" ng-model="selected" placeholder="搜索英雄" class ="championSearch"></div>
             <ul class="nav navbar-nav navbar-right text-uppercase">
                 <li>
                     <a href="/"><span>克制关系</span></a>
@@ -60,3 +61,26 @@
     </div><!-- /.container -->
 </nav>
 <!-- site-navigation end -->
+<script>
+    $(document).ready(function() {
+        var data = [
+            {label: 'Google', value: 'http://google.com'},
+            {label: 'Yahoo', value: 'http://yahoo.com'},
+            {label: 'BMW', value: 'http://bmw.com'},
+            {label: 'Bing', value: 'http://bing.com'}
+        ];
+        
+        $("input#championSearch").autocomplete({
+            lookup: data,
+            focus: function (event, ui) {
+                $(event.target).val(ui.item.label);
+                return false;
+            },
+            select: function (event, ui) {
+                $(event.target).val(ui.item.label);
+                window.location = ui.item.value;
+                return false;
+            }
+        });
+    });
+</script>

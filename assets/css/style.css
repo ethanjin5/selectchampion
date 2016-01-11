@@ -2079,3 +2079,12 @@ Site's Personal style
     float:left;
     width: 100%;
 }
+
+/* Champion Search Autocomplete styles*/
+.championSearch{
+	height: 33px;
+	margin-top: 18px;
+	margin-right: 20px;
+	padding-left:20px;
+}
+.floatright{float: right;margin-left: 35px;}

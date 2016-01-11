@@ -41,6 +41,21 @@ app.run(['$location', '$rootScope','$window', function($location, $rootScope, $w
                 $window.ga('send', 'pageview', { page: $location.path() });
         });
 }])
+
+app.controller('HeaderCtrl', function($scope, $http){
+    $http.get("app/core/champion_search_mysql.php")
+        .success(function(response) {$scope.championSearch = response;
+    });
+        $scope.names = [ { value: "www.foo.com",
+                 label: "Spencer Kline"
+               },
+               { value: "www.example.com",
+                 label: "James Bond"
+               }
+             ];
+
+})
+
 app.controller('HomeCtrl', function ($scope, $http) {
     $http.get("app/core/champion_list_mysql.php")
         .success(function(response) {$scope.champions = response;
@@ -105,4 +120,17 @@ app.controller('PageCtrl', function () {
 	$('.tooltip-social').tooltip({
 	selector: "a[data-toggle=tooltip]"
 	})
+});
+
+app.directive('autoComplete', function($timeout) {
+    return function(scope, iElement, iAttrs) {
+            iElement.autocomplete({
+                source: scope[iAttrs.uiItems],
+                select: function() {
+                    $timeout(function() {
+                      iElement.trigger('input');
+                    }, 0);
+                }
+            });
+    };
 });
