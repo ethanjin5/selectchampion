@@ -2,7 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=gb2312");
 
-require("/home/feifansnf/opt/selectchampion/mysql_config.php");
+require("/var/www/html/xuanyingxiong/mysql_config.php");
 
 $dbh = new PDO("mysql:host=$hostname;dbname=$db_name", $username, $password);
 $dbh->query('set names utf8;');
